@@ -4,3 +4,8 @@ dist
 .tanstack
 .vinxi
 *.log
+.env
+.env.*
+.DS_Store
+.netlify
+.vercel
