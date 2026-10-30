@@ -145,19 +145,17 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className={LINK_CLS}
             >
-              <span className="w-6 font-mono text-xs text-copper">01</span>
               {t.nav.club}
             </Link>
-            {PAGES.map((p, i) => (
+            {PAGES.map((p) => (
               <Link
                 key={p.to}
                 to={p.to}
                 tabIndex={open ? 0 : -1}
                 onClick={() => setOpen(false)}
-                className={LINK_CLS}
+                className={cn(LINK_CLS, p.key === "contact" && "mt-auto border-t border-paper/15 pt-4")}
                 activeProps={{ className: "text-wheat" }}
               >
-                <span className="w-6 font-mono text-xs text-copper">{String(i + 2).padStart(2, "0")}</span>
                 <span className="transition-transform duration-[var(--motion-emphasis)] ease-[var(--ease-smooth-out)] group-hover/l:translate-x-2">
                   {t.nav[p.key]}
                 </span>
