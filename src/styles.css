@@ -537,3 +537,78 @@
     animation: none;
   }
 }
+
+/* Contact CTA orb */
+.cta-ring {
+  animation: cta-spin 22s linear infinite;
+}
+.cta-orb:hover .cta-ring {
+  animation-duration: 8s;
+}
+.cta-halo {
+  box-shadow: 0 0 0 1px rgb(224 138 46 / 0.45);
+  animation: cta-pulse 3.2s var(--ease-out) infinite;
+}
+.cta-halo-2 {
+  animation-delay: 1.6s;
+}
+@keyframes cta-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes cta-pulse {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-ring,
+  .cta-halo {
+    animation: none;
+  }
+}
+
+/* Contact form states */
+.form-success > * {
+  animation: team-line 900ms var(--ease-smooth-out) both;
+}
+.form-success > :nth-child(2) { animation-delay: 120ms; }
+.form-success > :nth-child(3) { animation-delay: 220ms; }
+.form-success > :nth-child(4) { animation-delay: 320ms; }
+.success-badge {
+  animation: success-pop 900ms cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+  box-shadow: 0 0 0 0 rgb(224 138 46 / 0.5);
+}
+.success-badge::after {
+  content: "";
+  position: absolute;
+}
+@keyframes success-pop {
+  0% {
+    transform: scale(0) rotate(-120deg);
+    opacity: 0;
+  }
+  70% {
+    box-shadow: 0 0 0 24px rgb(224 138 46 / 0);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+.form-error {
+  animation: form-shake 450ms var(--ease-out);
+}
+@keyframes form-shake {
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-success > *, .success-badge, .form-error { animation: none !important; }
+}

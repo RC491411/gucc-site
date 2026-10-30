@@ -1,19 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import { Activity, ArrowDownRight, ArrowUpRight, BookOpen, Mic2, Waypoints } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { CountUp } from "@/components/motion/count-up";
 import { Marquee } from "@/components/motion/marquee";
 import { Parallax } from "@/components/motion/parallax";
 import { SplitText } from "@/components/motion/split-text";
 import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
 import { HeroPanels } from "@/components/site/hero-panels";
-import { JoinForm } from "@/components/site/join-form";
 import { NewsSection } from "@/components/site/news-section";
+import { ContactCta } from "@/components/site/contact-cta";
 import { TeamSequence } from "@/components/team/team-sequence";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
 import { Sparkline } from "@/components/site/sparkline";
-import { useGenevaClock } from "@/lib/hooks";
 import { useLanguage } from "@/lib/language";
 import { COMMODITIES, formatChange, formatPrice } from "@/lib/markets";
 import { useQuotes } from "@/components/site/quotes-provider";
@@ -29,42 +27,14 @@ const ICONS = {
 export function HomePage() {
   const { t, lang } = useLanguage();
   const quotes = useQuotes();
-  const clock = useGenevaClock();
   const [desk, setDesk] = useState<"energy" | "metals" | "ag">("energy");
 
-  const brent = quotes.BRENT?.price ?? 0;
-  const wti = quotes.WTI?.price ?? 0;
-  const spread = brent - wti;
 
   const board = useMemo(() => COMMODITIES.filter((c) => c.desk === desk), [desk]);
 
   return (
     <div>
       <HeroPanels />
-
-      <section className="border-y border-copper/25 bg-navy">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-4">
-          {t.stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 90} className="px-4 py-6 sm:px-6">
-              <p className="font-display text-2xl font-semibold uppercase tracking-wide text-wheat sm:text-3xl">
-                <CountUp value={s.value} />
-              </p>
-              <p className="mt-1 font-display text-xs uppercase tracking-widest text-ice">{s.label}</p>
-            </Reveal>
-          ))}
-        </div>
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-2 border-t border-copper/20 px-4 py-3 font-mono text-xs text-steel sm:px-6">
-          <span className="inline-flex items-center gap-2 tabular-nums text-wheat">
-            <span aria-hidden className="live-dot size-1.5 rounded-full bg-up" />
-            {t.clock} {clock}
-          </span>
-          <span>
-            {t.markets.spread}{" "}
-            <span className="tabular-nums text-paper">{spread.toFixed(2)} USD</span>
-          </span>
-          <span>{t.tickerNote}</span>
-        </div>
-      </section>
 
       <section id="club" className="scroll-mt-24 bg-paper text-ink">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:py-28">
@@ -141,7 +111,7 @@ export function HomePage() {
         </div>
         <div className="mx-auto flex max-w-6xl justify-center px-4 py-14 sm:px-6">
           <Button asChild size="lg">
-            <Link to="/team">
+            <Link to="/founders">
               {t.founders.meet}
               <ArrowUpRight className="size-4" />
             </Link>
@@ -227,17 +197,15 @@ export function HomePage() {
             <SplitText text={t.join.title} className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
             <p className="mt-5 font-serif text-lg leading-relaxed text-ice/90">{t.join.lead}</p>
             <p className="mt-4 font-serif text-base leading-relaxed text-steel">{t.join.how}</p>
-            <Link
-              to="/contact"
+            <a
+              href="mailto:gucc@unige.ch"
               className="mt-6 inline-block font-display text-sm uppercase tracking-widest text-wheat underline-offset-4 hover:underline"
             >
               gucc@unige.ch
-            </Link>
+            </a>
           </Reveal>
-          <Reveal delay={80}>
-            <div className="glow-card rounded-xl bg-navy p-5 shadow-[0_0_0_1px_rgb(224_138_46_/_0.28)] sm:p-8">
-              <JoinForm />
-            </div>
+          <Reveal delay={80} className="flex items-center justify-center">
+            <ContactCta />
           </Reveal>
         </div>
       </section>

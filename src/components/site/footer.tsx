@@ -21,16 +21,10 @@ export function Footer() {
             {t.footer.email}
           </Link>
           <Link
-            to="/team"
+            to="/founders"
             className="font-display text-sm uppercase tracking-widest text-wheat underline-offset-4 hover:underline"
           >
-            {t.nav.team}
-          </Link>
-          <Link
-            to="/statuts"
-            className="font-display text-sm uppercase tracking-widest text-wheat underline-offset-4 hover:underline"
-          >
-            {t.footer.statutes}
+            {t.nav.founders}
           </Link>
           <p className="font-mono text-xs text-steel">© 2026 {t.footer.rights}</p>
         </div>

@@ -36,20 +36,6 @@ export const NEWS: NewsItem[] = [
     linkedin:
       "https://www.linkedin.com/posts/geneva-university-commodities-club_commodities-geneva-unige-activity-7520752731444101120-732a",
   },
-  {
-    id: "bylaws",
-    date: "2026-09-01",
-    tag: { en: "Foundation", fr: "Fondation" },
-    title: {
-      en: "Bylaws adopted in Geneva",
-      fr: "Statuts adoptés à Genève",
-    },
-    summary: {
-      en: "The association's bylaws were adopted on 1 September 2026 in Geneva. They set out the club's aims, its governance by a Committee and General Assembly, and its membership rules.",
-      fr: "Les statuts de l'association ont été adoptés le 1er septembre 2026 à Genève. Ils fixent les buts du club, sa gouvernance par un Comité et une Assemblée générale, et ses règles d'adhésion.",
-    },
-    href: "/statuts",
-  },
 ];
 
 export function formatNewsDate(iso: string, lang: "en" | "fr") {

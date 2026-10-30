@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 const LINKS = [
   { href: "/#club", key: "club" as const },
   { href: "/#missions", key: "missions" as const },
-  { href: "/#fondateurs", key: "founders" as const },
   { href: "/#marches", key: "markets" as const },
   { href: "/#news", key: "news" as const },
 ];
@@ -74,7 +73,7 @@ export function Nav() {
 
           <div className="z-10 flex min-w-0 items-center gap-2">
             <Button asChild size="sm">
-              <a href="/#rejoindre">{t.nav.join}</a>
+              <Link to="/contact" search={{ interest: "join" }}>{t.nav.join}</Link>
             </Button>
             <div className="flex h-11 items-center rounded-md bg-paper/10 px-1 shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)]">
               {(["en", "fr"] as const).map((code) => (
@@ -147,20 +146,12 @@ export function Nav() {
               </a>
             ))}
             <Link
-              to="/team"
+              to="/founders"
               tabIndex={open ? 0 : -1}
               onClick={() => setOpen(false)}
               className="flex min-h-14 items-center font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
             >
-              {t.nav.team}
-            </Link>
-            <Link
-              to="/statuts"
-              tabIndex={open ? 0 : -1}
-              onClick={() => setOpen(false)}
-              className="flex min-h-14 items-center font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
-            >
-              {t.nav.statutes}
+              {t.nav.founders}
             </Link>
             <Link
               to="/contact"

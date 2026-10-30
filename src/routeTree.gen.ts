@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as StatutsRouteImport } from './routes/statuts'
+import { Route as FoundersRouteImport } from './routes/founders'
 import { Route as TeamRouteImport } from './routes/team'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,9 +24,9 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StatutsRoute = StatutsRouteImport.update({
-  id: '/statuts',
-  path: '/statuts',
+const FoundersRoute = FoundersRouteImport.update({
+  id: '/founders',
+  path: '/founders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TeamRoute = TeamRouteImport.update({
@@ -38,34 +38,34 @@ const TeamRoute = TeamRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/statuts': typeof StatutsRoute
+  '/founders': typeof FoundersRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/statuts': typeof StatutsRoute
+  '/founders': typeof FoundersRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/statuts': typeof StatutsRoute
+  '/founders': typeof FoundersRoute
   '/team': typeof TeamRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/statuts' | '/team'
+  fullPaths: '/' | '/contact' | '/founders' | '/team'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/statuts' | '/team'
-  id: '__root__' | '/' | '/contact' | '/statuts' | '/team'
+  to: '/' | '/contact' | '/founders' | '/team'
+  id: '__root__' | '/' | '/contact' | '/founders' | '/team'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
-  StatutsRoute: typeof StatutsRoute
+  FoundersRoute: typeof FoundersRoute
   TeamRoute: typeof TeamRoute
 }
 
@@ -85,11 +85,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/statuts': {
-      id: '/statuts'
-      path: '/statuts'
-      fullPath: '/statuts'
-      preLoaderRoute: typeof StatutsRouteImport
+    '/founders': {
+      id: '/founders'
+      path: '/founders'
+      fullPath: '/founders'
+      preLoaderRoute: typeof FoundersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/team': {
@@ -105,7 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
-  StatutsRoute: StatutsRoute,
+  FoundersRoute: FoundersRoute,
   TeamRoute: TeamRoute,
 }
 export const routeTree = rootRouteImport

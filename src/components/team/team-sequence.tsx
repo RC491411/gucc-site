@@ -176,7 +176,7 @@ function PinnedDeck() {
                   <Linkedin className="size-4" /> {t.founders.linkedin}
                 </a>
                 <Link
-                  to="/team"
+                  to="/founders"
                   hash={f.id}
                   className="inline-flex h-11 items-center gap-1 font-display text-sm uppercase tracking-widest text-ice hover:text-wheat"
                 >
@@ -261,7 +261,7 @@ function TeamList() {
                 ))}
               </ul>
               <Link
-                to="/team"
+                to="/founders"
                 hash={f.id}
                 className="inline-flex h-11 items-center gap-1 font-display text-sm uppercase tracking-widest text-wheat hover:underline"
               >

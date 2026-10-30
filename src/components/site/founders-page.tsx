@@ -8,7 +8,7 @@ import { founders } from "@/lib/content";
 import { useLanguage } from "@/lib/language";
 import { cn } from "@/lib/utils";
 
-export function TeamPage() {
+export function FoundersPage() {
   const { t, lang } = useLanguage();
   return (
     <div className="bg-ink text-paper">
