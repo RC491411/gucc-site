@@ -14,6 +14,7 @@ export function FoundersPage() {
     <div className="bg-ink text-paper">
       <div className="relative overflow-hidden">
         <div className="bg-grid absolute inset-0 opacity-60 [mask-image:linear-gradient(to_bottom,black,transparent)]" />
+        <div aria-hidden className="hero-glow absolute -right-40 -top-20 size-[38rem] rounded-full" />
         <div className="relative mx-auto max-w-6xl px-4 pb-10 pt-14 sm:px-6 sm:pt-20">
           <Link
             to="/"
@@ -23,9 +24,15 @@ export function FoundersPage() {
             <ArrowLeft className="size-4" />
             {t.team.back}
           </Link>
-          <p className="mt-10 font-display text-xs uppercase tracking-widest text-copper">{t.team.kicker}</p>
+          <p className="mt-10 flex items-center gap-3 font-display text-xs uppercase tracking-widest text-copper">
+            <span className="font-mono text-wheat">05 / 06</span>
+            <span className="hero-rule h-px w-12 bg-copper" />
+            {t.team.kicker}
+          </p>
           <SplitText
             as="h1"
+            by="chars"
+            stagger={22}
             immediate
             delay={150}
             text={t.team.title}

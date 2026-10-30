@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FoundersRouteImport } from './routes/founders'
+import { Route as MarketsRouteImport } from './routes/markets'
+import { Route as MissionsRouteImport } from './routes/missions'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as TeamRouteImport } from './routes/team'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +32,21 @@ const FoundersRoute = FoundersRouteImport.update({
   path: '/founders',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketsRoute = MarketsRouteImport.update({
+  id: '/markets',
+  path: '/markets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MissionsRoute = MissionsRouteImport.update({
+  id: '/missions',
+  path: '/missions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
@@ -39,12 +57,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/founders': typeof FoundersRoute
+  '/markets': typeof MarketsRoute
+  '/missions': typeof MissionsRoute
+  '/news': typeof NewsRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/founders': typeof FoundersRoute
+  '/markets': typeof MarketsRoute
+  '/missions': typeof MissionsRoute
+  '/news': typeof NewsRoute
   '/team': typeof TeamRoute
 }
 export interface FileRoutesById {
@@ -52,20 +76,48 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/founders': typeof FoundersRoute
+  '/markets': typeof MarketsRoute
+  '/missions': typeof MissionsRoute
+  '/news': typeof NewsRoute
   '/team': typeof TeamRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/founders' | '/team'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/founders'
+    | '/markets'
+    | '/missions'
+    | '/news'
+    | '/team'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/founders' | '/team'
-  id: '__root__' | '/' | '/contact' | '/founders' | '/team'
+  to:
+    | '/'
+    | '/contact'
+    | '/founders'
+    | '/markets'
+    | '/missions'
+    | '/news'
+    | '/team'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/founders'
+    | '/markets'
+    | '/missions'
+    | '/news'
+    | '/team'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   FoundersRoute: typeof FoundersRoute
+  MarketsRoute: typeof MarketsRoute
+  MissionsRoute: typeof MissionsRoute
+  NewsRoute: typeof NewsRoute
   TeamRoute: typeof TeamRoute
 }
 
@@ -92,6 +144,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoundersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/markets': {
+      id: '/markets'
+      path: '/markets'
+      fullPath: '/markets'
+      preLoaderRoute: typeof MarketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/missions': {
+      id: '/missions'
+      path: '/missions'
+      fullPath: '/missions'
+      preLoaderRoute: typeof MissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/team': {
       id: '/team'
       path: '/team'
@@ -106,6 +179,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
   FoundersRoute: FoundersRoute,
+  MarketsRoute: MarketsRoute,
+  MissionsRoute: MissionsRoute,
+  NewsRoute: NewsRoute,
   TeamRoute: TeamRoute,
 }
 export const routeTree = rootRouteImport

@@ -612,3 +612,249 @@
 @media (prefers-reduced-motion: reduce) {
   .form-success > *, .success-badge, .form-error { animation: none !important; }
 }
+
+/* ---------- Dedicated pages (v5) ---------- */
+.hero-glow {
+  background: radial-gradient(circle, rgb(224 138 46 / 0.22), transparent 62%);
+  filter: blur(10px);
+  animation: hero-glow 9s ease-in-out infinite alternate;
+}
+@keyframes hero-glow {
+  to {
+    transform: translate3d(-60px, 40px, 0) scale(1.15);
+    opacity: 0.7;
+  }
+}
+.hero-rule {
+  transform-origin: left;
+  animation: hero-rule 1.2s 0.3s var(--ease-smooth-out) backwards;
+}
+@keyframes hero-rule {
+  from {
+    transform: scaleX(0);
+  }
+}
+.scroll-line span {
+  animation: scroll-line 2s var(--ease-out) infinite;
+}
+@keyframes scroll-line {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(200%);
+  }
+}
+
+/* Missions: isometric floating stack */
+.mission-stack {
+  perspective: 1400px;
+}
+.mission-stack-plane {
+  transform-style: preserve-3d;
+  transform: rotateX(calc(52deg + var(--my, 0deg))) rotateZ(calc(-38deg + var(--mx, 0deg)));
+  transition: transform 0.6s var(--ease-smooth-out);
+  animation: stack-in 1.4s 0.2s var(--ease-smooth-out) backwards;
+}
+@keyframes stack-in {
+  from {
+    opacity: 0;
+    transform: rotateX(70deg) rotateZ(-70deg) scale(0.7);
+  }
+}
+.mission-layer {
+  transform: translateZ(calc(var(--i) * 46px));
+  animation: layer-float 5s calc(var(--i) * -0.6s) ease-in-out infinite alternate;
+  transition: transform 0.6s var(--ease-smooth-out);
+}
+@keyframes layer-float {
+  to {
+    transform: translateZ(calc(var(--i) * 66px + 10px));
+  }
+}
+.mission-stack:hover .mission-layer {
+  animation-play-state: paused;
+  transform: translateZ(calc(var(--i) * 90px));
+}
+
+/* Missions: sticky deck */
+.mission-deck {
+  perspective: 1600px;
+  transform-style: preserve-3d;
+}
+.mission-deck-card {
+  transition:
+    transform 0.9s var(--ease-smooth-out),
+    opacity 0.7s var(--ease-smooth-out),
+    filter 0.7s var(--ease-smooth-out);
+  transform-origin: 50% 100%;
+}
+.mission-deck-card[data-state="active"] {
+  transform: none;
+}
+.mission-deck-card[data-state="next"] {
+  transform: translate3d(calc(var(--off) * 26px), calc(var(--off) * -28px), calc(var(--off) * -120px)) rotateY(calc(var(--off) * -6deg));
+  filter: brightness(calc(1 - var(--off) * 0.22));
+}
+.mission-deck-card[data-state="past"] {
+  transform: translate3d(-30%, -40%, 200px) rotateX(55deg) rotateZ(-12deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Markets: 3D trading floor */
+.market-terrain {
+  perspective: 1200px;
+}
+.market-plane {
+  transform-style: preserve-3d;
+  transform: rotateX(calc(56deg + var(--my, 0deg))) rotateZ(calc(-24deg + var(--mx, 0deg)));
+  transition: transform 0.7s var(--ease-smooth-out);
+  animation: stack-in 1.4s 0.2s var(--ease-smooth-out) backwards;
+}
+.terrain-line,
+.terrain-glow {
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    terrain-draw 2.4s var(--d) var(--ease-smooth-out) forwards,
+    terrain-breathe 6s calc(var(--d) + 2.4s) ease-in-out infinite alternate;
+}
+.terrain-line {
+  stroke-width: 2.2;
+}
+.terrain-glow {
+  stroke-width: 9;
+  opacity: 0.18;
+  filter: blur(4px);
+}
+@keyframes terrain-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes terrain-breathe {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -0.12;
+    stroke-dasharray: 0.88 0.12;
+  }
+}
+.terrain-chip {
+  transform: translateZ(var(--z)) rotateZ(24deg) rotateX(-56deg);
+  animation: chip-bob 4.5s var(--d) ease-in-out infinite alternate;
+}
+@keyframes chip-bob {
+  to {
+    transform: translateZ(calc(var(--z) + 40px)) rotateZ(24deg) rotateX(-56deg);
+  }
+}
+.chart-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: terrain-draw 1.6s 0.4s var(--ease-smooth-out) forwards;
+}
+.chart-area {
+  animation: chart-area 1.2s 1.1s ease-out backwards;
+}
+@keyframes chart-area {
+  from {
+    opacity: 0;
+  }
+}
+.chart-scan {
+  animation: chart-scan 3.2s ease-in-out infinite;
+}
+@keyframes chart-scan {
+  from {
+    transform: translateX(-60px);
+  }
+  to {
+    transform: translateX(300px);
+  }
+}
+.chart-dot {
+  box-shadow: 0 0 0 0 currentColor;
+  animation: dot-ping 2s 1.8s ease-out infinite;
+}
+@keyframes dot-ping {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, currentColor 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+
+/* News: floating post stack */
+.news-stack {
+  perspective: 1400px;
+}
+.news-plane {
+  transform-style: preserve-3d;
+  transform: rotateY(-22deg) rotateX(10deg);
+  animation:
+    stack-in 1.4s 0.2s var(--ease-smooth-out) backwards,
+    news-sway 7s 1.6s ease-in-out infinite alternate;
+}
+@keyframes news-sway {
+  to {
+    transform: rotateY(-8deg) rotateX(4deg) translateY(-12px);
+  }
+}
+.news-orbit {
+  animation: orbit 40s linear infinite;
+}
+.news-orbit-2 {
+  animation-duration: 26s;
+  animation-direction: reverse;
+}
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.news-orbit::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--color-wheat);
+  box-shadow: 0 0 18px var(--color-wheat);
+}
+.timeline-dot {
+  box-shadow: 0 0 0 4px var(--color-ink), 0 0 18px var(--color-wheat);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow,
+  .hero-rule,
+  .scroll-line span,
+  .mission-stack-plane,
+  .mission-layer,
+  .market-plane,
+  .terrain-chip,
+  .chart-area,
+  .chart-scan,
+  .chart-dot,
+  .news-plane,
+  .news-orbit {
+    animation: none;
+  }
+  .terrain-line,
+  .terrain-glow,
+  .chart-draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .mission-deck-card {
+    transition: none;
+  }
+}

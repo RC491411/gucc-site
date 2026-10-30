@@ -8,6 +8,12 @@ export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): ContactSearch => ({
     interest: typeof search.interest === "string" ? search.interest : undefined,
   }),
+  head: () => ({
+    meta: [
+      { title: "Contact · Geneva University Commodities Club" },
+      { name: "description", content: "Write to the Geneva University Commodities Club at gucc@unige.ch or through the contact form." },
+    ],
+  }),
   component: Contact,
 });
 

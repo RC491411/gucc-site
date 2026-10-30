@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Parallax } from "@/components/motion/parallax";
 import { SplitText } from "@/components/motion/split-text";
+import { SeeMore } from "@/components/pages/see-more";
 import { Reveal } from "@/components/site/reveal";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language";
@@ -66,6 +67,9 @@ export function NewsSection() {
             </Reveal>
           </div>
         </div>
+        <Reveal className="mt-10 flex justify-end">
+          <SeeMore to="/news" />
+        </Reveal>
       </div>
     </section>
   );

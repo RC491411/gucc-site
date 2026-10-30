@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouterState } from "@tanstack/react-router";
 import Lenis from "lenis";
-import { ensureGsap, prefersReducedMotion, richMotion, scrollState, setLenis } from "@/lib/motion";
+import { ensureGsap, getLenis, prefersReducedMotion, richMotion, scrollState, setLenis } from "@/lib/motion";
 
 /**
  * Global motion layer mounted once in the root:
@@ -261,6 +261,10 @@ function RouteCurtain({ pathname }: { pathname: string }) {
   useEffect(() => {
     if (prev.current === pathname) return;
     prev.current = pathname;
+    if (!window.location.hash) {
+      getLenis()?.scrollTo(0, { immediate: true, force: true });
+      window.scrollTo(0, 0);
+    }
     const el = ref.current;
     if (!el || prefersReducedMotion()) return;
     const { gsap, ScrollTrigger } = ensureGsap();

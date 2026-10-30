@@ -1,5 +1,5 @@
 import { Link, useSearch } from "@tanstack/react-router";
-import { AlertTriangle, ArrowLeft, Check, Loader2, Mail, Send } from "lucide-react";
+import { AlertTriangle, Check, ChevronRight, Loader2, Mail, Send } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -119,22 +119,28 @@ export function ContactPage() {
   const errCls = "mt-1 font-serif text-sm text-down";
 
   return (
-    <div className="bg-ink text-paper">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <Link
-          to="/"
-          className="inline-flex h-11 items-center gap-2 font-display text-sm uppercase tracking-widest text-copper hover:text-wheat"
-        >
-          <ArrowLeft className="size-4" />
-          {lang === "fr" ? "Retour" : "Back"}
-        </Link>
-        <p className="mt-10 font-display text-xs uppercase tracking-widest text-copper">{c.kicker}</p>
+    <div className="relative overflow-hidden bg-ink text-paper">
+      <div className="bg-grid absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_70%_10%,black,transparent_60%)]" />
+      <div aria-hidden className="hero-glow absolute -right-40 -top-20 size-[38rem] rounded-full" />
+      <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 font-display text-xs uppercase tracking-widest text-steel">
+          <Link to="/" className="hover:text-wheat">GUCC</Link>
+          <ChevronRight className="size-3 text-copper" />
+          <span className="text-ice">{c.kicker}</span>
+        </nav>
+        <p className="mt-10 flex items-center gap-3 font-display text-xs uppercase tracking-widest text-copper">
+          <span className="font-mono text-wheat">06 / 06</span>
+          <span className="hero-rule h-px w-12 bg-copper" />
+          {c.kicker}
+        </p>
         <SplitText
           as="h1"
+          by="chars"
           immediate
           delay={150}
+          stagger={22}
           text={c.title}
-          className="mt-3 max-w-2xl pr-1 font-display text-3xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl"
+          className="mt-4 max-w-3xl pr-1 font-display text-4xl font-semibold uppercase leading-[0.92] tracking-tight sm:text-7xl"
         />
         <Reveal delay={350}>
           <p className="mt-5 max-w-xl font-serif text-lg leading-relaxed text-ice">{c.lead}</p>

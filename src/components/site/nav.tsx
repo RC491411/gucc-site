@@ -7,12 +7,16 @@ import { useLanguage } from "@/lib/language";
 import { getLenis } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-const LINKS = [
-  { href: "/#club", key: "club" as const },
-  { href: "/#missions", key: "missions" as const },
-  { href: "/#marches", key: "markets" as const },
-  { href: "/#news", key: "news" as const },
-];
+const PAGES = [
+  { to: "/missions", key: "missions" },
+  { to: "/markets", key: "markets" },
+  { to: "/news", key: "news" },
+  { to: "/founders", key: "founders" },
+  { to: "/contact", key: "contact" },
+] as const;
+
+const LINK_CLS =
+  "group/l flex min-h-14 items-center gap-4 font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat";
 
 export function Nav() {
   const { t, lang, setLang } = useLanguage();
@@ -134,33 +138,31 @@ export function Nav() {
             </button>
           </div>
           <nav data-lenis-prevent className={cn("menu-links flex flex-1 flex-col gap-1 overflow-y-auto px-6 pb-10 pt-4", open && "is-open")}>
-            {LINKS.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+            <Link
+              to="/"
+              hash="club"
+              tabIndex={open ? 0 : -1}
+              onClick={() => setOpen(false)}
+              className={LINK_CLS}
+            >
+              <span className="w-6 font-mono text-xs text-copper">01</span>
+              {t.nav.club}
+            </Link>
+            {PAGES.map((p, i) => (
+              <Link
+                key={p.to}
+                to={p.to}
                 tabIndex={open ? 0 : -1}
                 onClick={() => setOpen(false)}
-                className="flex min-h-14 items-center font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
+                className={LINK_CLS}
+                activeProps={{ className: "text-wheat" }}
               >
-                {t.nav[l.key]}
-              </a>
+                <span className="w-6 font-mono text-xs text-copper">{String(i + 2).padStart(2, "0")}</span>
+                <span className="transition-transform duration-[var(--motion-emphasis)] ease-[var(--ease-smooth-out)] group-hover/l:translate-x-2">
+                  {t.nav[p.key]}
+                </span>
+              </Link>
             ))}
-            <Link
-              to="/founders"
-              tabIndex={open ? 0 : -1}
-              onClick={() => setOpen(false)}
-              className="flex min-h-14 items-center font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
-            >
-              {t.nav.founders}
-            </Link>
-            <Link
-              to="/contact"
-              tabIndex={open ? 0 : -1}
-              onClick={() => setOpen(false)}
-              className="mt-auto flex min-h-14 items-center font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
-            >
-              {t.nav.contact}
-            </Link>
           </nav>
         </aside>
       </div>

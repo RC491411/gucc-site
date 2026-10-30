@@ -8,6 +8,7 @@ import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
 import { HeroPanels } from "@/components/site/hero-panels";
 import { NewsSection } from "@/components/site/news-section";
 import { ContactCta } from "@/components/site/contact-cta";
+import { SeeMore } from "@/components/pages/see-more";
 import { TeamSequence } from "@/components/team/team-sequence";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
@@ -74,6 +75,9 @@ export function HomePage() {
               );
             })}
           </MissionsGrid>
+          <Reveal className="mt-10 flex justify-end">
+            <SeeMore to="/missions" />
+          </Reveal>
         </div>
       </section>
 
@@ -185,6 +189,9 @@ export function HomePage() {
               );
             })}
           </div>
+          <Reveal className="mt-10 flex justify-end">
+            <SeeMore to="/markets" />
+          </Reveal>
         </div>
       </section>
 
