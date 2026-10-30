@@ -195,8 +195,6 @@ export function HomePage() {
           <Reveal>
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.join.kicker}</p>
             <SplitText text={t.join.title} className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
-            <p className="mt-5 font-serif text-lg leading-relaxed text-ice/90">{t.join.lead}</p>
-            <p className="mt-4 font-serif text-base leading-relaxed text-steel">{t.join.how}</p>
             <a
               href="mailto:gucc@unige.ch"
               className="mt-6 inline-block font-display text-sm uppercase tracking-widest text-wheat underline-offset-4 hover:underline"
