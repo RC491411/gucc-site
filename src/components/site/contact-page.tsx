@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { Reveal } from "@/components/site/reveal";
+import { SplitText } from "@/components/motion/split-text";
 import { ArrowLeft, Mail } from "lucide-react";
 import { useState, type FormEvent, type MouseEvent } from "react";
 import { toast } from "sonner";
@@ -83,13 +85,20 @@ ${parsed.data.from}`;
           {lang === "fr" ? "Retour" : "Back"}
         </Link>
         <p className="mt-10 font-display text-xs uppercase tracking-widest text-copper">{c.kicker}</p>
-        <h1 className="mt-3 max-w-2xl pr-1 font-display text-3xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl">
-          {c.title}
-        </h1>
-        <p className="mt-5 max-w-xl font-serif text-lg leading-relaxed text-ice">{c.lead}</p>
+        <SplitText
+          as="h1"
+          immediate
+          delay={150}
+          text={c.title}
+          className="mt-3 max-w-2xl pr-1 font-display text-3xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-6xl"
+        />
+        <Reveal delay={350}>
+          <p className="mt-5 max-w-xl font-serif text-lg leading-relaxed text-ice">{c.lead}</p>
+        </Reveal>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          <article className="flex min-h-80 flex-col justify-between rounded-xl bg-navy p-6 shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8 lg:aspect-square">
+          <Reveal delay={450} className="h-full">
+          <article data-tilt="6" className="glow-card flex h-full min-h-80 flex-col justify-between rounded-xl bg-navy p-6 shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8 lg:aspect-square">
             <div>
               <p className="font-display text-xs uppercase tracking-widest text-wheat">{c.emailLabel}</p>
               <a
@@ -108,8 +117,10 @@ ${parsed.data.from}`;
               </a>
             </Button>
           </article>
+          </Reveal>
 
-          <article className="flex min-h-80 flex-col rounded-xl bg-paper p-6 text-ink shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8 lg:aspect-square">
+          <Reveal delay={600} className="h-full">
+          <article className="flex h-full min-h-80 flex-col rounded-xl bg-paper p-6 text-ink shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8 lg:aspect-square">
             <p className="font-display text-xs uppercase tracking-widest text-copper">{c.cardKicker}</p>
             <h2 className="mt-3 font-display text-2xl font-semibold uppercase leading-none tracking-tight sm:text-3xl">
               {c.cardTitle}
@@ -157,6 +168,7 @@ ${parsed.data.from}`;
               </Button>
             </form>
           </article>
+          </Reveal>
         </div>
       </div>
     </div>

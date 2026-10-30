@@ -8,7 +8,9 @@ export function Footer() {
     <footer className="border-t border-copper/25 bg-ink">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="space-y-3">
-          <BrandMark />
+          <div data-magnetic="0.2" className="w-fit">
+            <BrandMark />
+          </div>
           <p className="font-serif text-sm text-steel">{t.footer.indep}</p>
         </div>
         <div className="flex flex-col items-start gap-2 lg:items-end">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/site/brand-mark";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language";
+import { getLenis } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
@@ -27,8 +28,12 @@ export function Nav() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const lenis = getLenis();
+    if (open) lenis?.stop();
+    else lenis?.start();
     return () => {
       document.body.style.overflow = "";
+      getLenis()?.start();
     };
   }, [open]);
 
@@ -51,12 +56,13 @@ export function Nav() {
         <div className="relative mx-auto flex h-20 max-w-6xl items-center justify-between gap-2 px-3 sm:px-6">
           <button
             type="button"
-            className="z-10 inline-flex size-11 items-center justify-center rounded-md text-paper"
+            data-magnetic="0.4"
+            className="group/menu z-10 inline-flex size-11 items-center justify-center rounded-md text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
             aria-label={t.nav.menu}
             aria-expanded={open}
             onClick={() => setOpen(true)}
           >
-            <Menu className="size-5" />
+            <Menu className="size-5 transition-transform duration-[var(--motion-emphasis)] ease-[var(--ease-smooth-out)] group-hover/menu:scale-x-125" />
           </button>
 
           <div className="pointer-events-none absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center">
@@ -74,6 +80,7 @@ export function Nav() {
                 <button
                   key={code}
                   type="button"
+                  data-magnetic="0.25"
                   onClick={() => setLang(code)}
                   className={cn(
                     "h-8 min-w-9 rounded-sm px-2 font-display text-xs uppercase tracking-widest transition-[background-color,color] duration-[var(--motion-quick)]",
@@ -126,7 +133,7 @@ export function Nav() {
               <X className="size-5" />
             </button>
           </div>
-          <nav className="flex flex-1 flex-col gap-1 px-6 pb-10 pt-4">
+          <nav data-lenis-prevent className={cn("menu-links flex flex-1 flex-col gap-1 px-6 pb-10 pt-4", open && "is-open")}>
             {LINKS.map((l) => (
               <a
                 key={l.href}

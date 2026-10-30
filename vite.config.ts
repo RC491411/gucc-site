@@ -4,7 +4,7 @@ import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  server: { host: "0.0.0.0", port: 8080 },
+  server: { host: "0.0.0.0", port: 8080, allowedHosts: true },
   preview: { host: "0.0.0.0", port: 8081 },
   resolve: { tsconfigPaths: true },
   plugins: [tailwindcss(), tanstackStart(), viteReact()],

@@ -1,4 +1,6 @@
 import { Link } from "@tanstack/react-router";
+import { Reveal } from "@/components/site/reveal";
+import { SplitText } from "@/components/motion/split-text";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/lib/language";
 
@@ -115,9 +117,14 @@ export function StatutsPage() {
         <p className="mt-8 font-display text-xs uppercase tracking-widest text-copper">
           Association étudiante · Genève
         </p>
-        <h1 className="mt-3 font-display text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl">
-          {lang === "fr" ? "Statuts" : "Bylaws"}
-        </h1>
+        <SplitText
+          as="h1"
+          by="chars"
+          immediate
+          delay={150}
+          text={lang === "fr" ? "Statuts" : "Bylaws"}
+          className="mt-3 font-display text-4xl font-semibold uppercase leading-[0.95] tracking-tight sm:text-5xl"
+        />
         <p className="mt-4 font-serif text-lg italic text-navy/70">Connecting Academia to Global Trade</p>
         <p className="mt-6 font-serif text-base leading-relaxed text-navy/80">
           {lang === "fr"
@@ -125,11 +132,14 @@ export function StatutsPage() {
             : "Adopted on 1 September 2026 in Geneva. The public name and identity of the association is Geneva University Commodities Club; the constitutive bylaws also record Geneva Commodities Student Club (GCSC). The authentic legal text is in French."}
         </p>
         <div className="mt-12 space-y-8">
-          {ARTICLES.map((a) => (
-            <article key={a.id} className="border-t border-navy/10 pt-6">
+          {ARTICLES.map((a, i) => (
+            <Reveal key={a.id} delay={i < 3 ? 300 + i * 100 : 0}>
+            <article className="group/art relative border-t border-navy/10 pt-6">
+              <span aria-hidden className="absolute -top-px left-0 h-px w-full origin-left scale-x-0 bg-copper transition-transform duration-[var(--motion-emphasis)] ease-[var(--ease-smooth-out)] group-hover/art:scale-x-100" />
               <h2 className="font-display text-lg font-semibold uppercase tracking-[0.08em]">{a.title}</h2>
               <p className="mt-2 font-serif text-base leading-relaxed text-navy/80">{a.body}</p>
             </article>
+            </Reveal>
           ))}
         </div>
       </div>

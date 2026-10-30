@@ -1,6 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { Activity, ArrowDownRight, ArrowUpRight, BookOpen, Linkedin, Mic2, Waypoints } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { CountUp } from "@/components/motion/count-up";
+import { Marquee } from "@/components/motion/marquee";
+import { Parallax } from "@/components/motion/parallax";
+import { SplitText } from "@/components/motion/split-text";
+import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
 import { HeroPanels } from "@/components/site/hero-panels";
 import { JoinForm } from "@/components/site/join-form";
 import { Reveal } from "@/components/site/reveal";
@@ -37,17 +42,18 @@ export function HomePage() {
 
       <section className="border-y border-copper/25 bg-navy">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px sm:grid-cols-4">
-          {t.stats.map((s) => (
-            <div key={s.label} className="px-4 py-6 sm:px-6">
+          {t.stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 90} className="px-4 py-6 sm:px-6">
               <p className="font-display text-2xl font-semibold uppercase tracking-wide text-wheat sm:text-3xl">
-                {s.value}
+                <CountUp value={s.value} />
               </p>
               <p className="mt-1 font-display text-xs uppercase tracking-widest text-ice">{s.label}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-8 gap-y-2 border-t border-copper/20 px-4 py-3 font-mono text-xs text-steel sm:px-6">
-          <span className="tabular-nums text-wheat">
+          <span className="inline-flex items-center gap-2 tabular-nums text-wheat">
+            <span aria-hidden className="live-dot size-1.5 rounded-full bg-up" />
             {t.clock} {clock}
           </span>
           <span>
@@ -62,13 +68,11 @@ export function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:py-28">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.club.kicker}</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl">
-              {t.club.title}
-            </h2>
+            <SplitText text={t.club.title} className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
             <p className="mt-6 max-w-xl font-serif text-lg leading-relaxed text-ink/80">{t.club.body}</p>
           </Reveal>
           <Reveal delay={80}>
-            <aside className="rounded-xl bg-navy p-6 text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8">
+            <aside data-tilt="10" className="glow-card rounded-xl bg-navy p-6 text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8">
               <img src="/mark.svg" alt="" className="drop-pulse size-12" />
               <p className="mt-5 font-serif text-base leading-relaxed text-ice">{t.club.aside}</p>
             </aside>
@@ -80,36 +84,34 @@ export function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.missions.kicker}</p>
-            <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl">
-              {t.missions.title}
-            </h2>
+            <SplitText text={t.missions.title} className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
           </Reveal>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2">
-            {t.missions.items.map((item, i) => {
+          <MissionsGrid>
+            {t.missions.items.map((item) => {
               const Icon = ICONS[item.key as keyof typeof ICONS];
               return (
-                <Reveal key={item.key} delay={i * 60}>
-                  <article className="h-full rounded-xl bg-navy p-6 shadow-[0_0_0_1px_rgb(224_138_46_/_0.22)] transition-[box-shadow] duration-[var(--motion-quick)] hover:shadow-[0_0_0_1px_rgb(242_193_75_/_0.45)] sm:p-8">
-                    <div className="flex size-11 items-center justify-center rounded-md text-wheat shadow-[0_0_0_1px_rgb(224_138_46_/_0.4)]">
+                <div key={item.key} data-mission className="h-full">
+                  <article data-tilt="9" className="glow-card group/m h-full rounded-xl bg-navy p-6 shadow-[0_0_0_1px_rgb(224_138_46_/_0.22)] transition-[box-shadow] duration-[var(--motion-quick)] hover:shadow-[0_0_0_1px_rgb(242_193_75_/_0.45)] sm:p-8">
+                    <div className="flex size-11 items-center justify-center rounded-md text-wheat shadow-[0_0_0_1px_rgb(224_138_46_/_0.4)] transition-[transform,background-color,color] duration-[var(--motion-emphasis)] ease-[var(--ease-smooth-out)] group-hover/m:rotate-[8deg] group-hover/m:scale-110 group-hover/m:bg-copper group-hover/m:text-ink">
                       <Icon className="size-5" />
                     </div>
                     <h3 className="mt-5 font-display text-2xl font-semibold uppercase tracking-wide">{item.title}</h3>
                     <p className="mt-3 font-serif text-base leading-relaxed text-ice/90">{item.body}</p>
                   </article>
-                </Reveal>
+                </div>
               );
             })}
-          </div>
+          </MissionsGrid>
         </div>
       </section>
+
+      <Marquee text="Geneva University Commodities Club" />
 
       <section id="marches" className="scroll-mt-24 border-t border-copper/20 bg-ink">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.markets.kicker}</p>
-            <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl">
-              {t.markets.title}
-            </h2>
+            <SplitText text={t.markets.title} className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
             <p className="mt-5 max-w-2xl font-serif text-lg leading-relaxed text-ice/90">{t.markets.lead}</p>
           </Reveal>
 
@@ -118,6 +120,7 @@ export function HomePage() {
               <button
                 key={d.key}
                 type="button"
+                data-magnetic="0.3"
                 onClick={() => setDesk(d.key as typeof desk)}
                 className={cn(
                   "h-11 rounded-md px-4 font-display text-sm uppercase tracking-widest transition-[background-color,color] duration-[var(--motion-quick)]",
@@ -132,14 +135,16 @@ export function HomePage() {
             {t.markets.desks.find((d) => d.key === desk)?.body}
           </p>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {board.map((c) => {
+          <div key={desk} className="mt-8 grid gap-3 sm:grid-cols-3">
+            {board.map((c, i) => {
               const q = quotes[c.symbol];
               const up = (q?.change ?? 0) >= 0;
               return (
                 <article
                   key={c.symbol}
-                  className="rounded-xl bg-navy p-5 shadow-[0_0_0_1px_rgb(224_138_46_/_0.22)]"
+                  data-tilt="8"
+                  style={{ animationDelay: `${i * 90}ms` }}
+                  className="board-in glow-card rounded-xl bg-navy p-5 shadow-[0_0_0_1px_rgb(224_138_46_/_0.22)]"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
@@ -175,20 +180,18 @@ export function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.founders.kicker}</p>
-            <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl">
-              {t.founders.title}
-            </h2>
+            <SplitText text={t.founders.title} className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
           </Reveal>
 
           <Reveal delay={40}>
             <figure className="mt-10">
-              <div className="overflow-hidden rounded-xl">
+              <Parallax reveal amount={14} className="aspect-video rounded-xl">
                 <img
                   src="/founders-group.jpg"
                   alt={t.founders.photoCaption}
-                  className="aspect-video w-full object-cover object-top"
+                  className="size-full object-cover object-top"
                 />
-              </div>
+              </Parallax>
               <figcaption className="mt-3 px-1 font-display text-xs uppercase tracking-widest text-ink/50">
                 {t.founders.photoCaption}
               </figcaption>
@@ -197,13 +200,13 @@ export function HomePage() {
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {founders.map((f, i) => (
-              <Reveal key={f.id} delay={i * 50}>
-                <article className="group h-full overflow-hidden rounded-xl bg-navy text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.28)]">
+              <Reveal key={f.id} delay={i * 120}>
+                <article data-tilt="12" className="glow-card group h-full overflow-hidden rounded-xl bg-navy text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.28)]">
                   <div className="relative aspect-square overflow-hidden">
                     <img
                       src={f.image}
                       alt={f.name}
-                      className="size-full object-cover object-top transition-transform duration-[var(--motion-slow)] ease-[var(--ease-out)] group-hover:scale-[1.03]"
+                      className="size-full object-cover object-top transition-transform duration-[var(--motion-slow)] ease-[var(--ease-out)] group-hover:scale-[1.08]"
                     />
                   </div>
                   <div className="space-y-3 p-5">
@@ -237,9 +240,7 @@ export function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-28 lg:pb-32">
           <Reveal>
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.join.kicker}</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl">
-              {t.join.title}
-            </h2>
+            <SplitText text={t.join.title} className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
             <p className="mt-5 font-serif text-lg leading-relaxed text-ice/90">{t.join.lead}</p>
             <p className="mt-4 font-serif text-base leading-relaxed text-steel">{t.join.how}</p>
             <Link
@@ -250,12 +251,60 @@ export function HomePage() {
             </Link>
           </Reveal>
           <Reveal delay={80}>
-            <div className="rounded-xl bg-navy p-5 shadow-[0_0_0_1px_rgb(224_138_46_/_0.28)] sm:p-8">
+            <div className="glow-card rounded-xl bg-navy p-5 shadow-[0_0_0_1px_rgb(224_138_46_/_0.28)] sm:p-8">
               <JoinForm />
             </div>
           </Reveal>
         </div>
       </section>
+    </div>
+  );
+}
+
+/** Keeps the 2x2 missions grid, assembling the cards in 3D as the section scrolls in. */
+function MissionsGrid({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || prefersReducedMotion()) return;
+    const { gsap } = ensureGsap();
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>("[data-mission]");
+      cards.forEach((card, i) => {
+        const fromLeft = i % 2 === 0;
+        gsap.fromTo(
+          card,
+          {
+            rotateX: 38,
+            rotateY: fromLeft ? -18 : 18,
+            z: -260,
+            y: 140,
+            xPercent: fromLeft ? -12 : 12,
+            autoAlpha: 0,
+          },
+          {
+            rotateX: 0,
+            rotateY: 0,
+            z: 0,
+            y: 0,
+            xPercent: 0,
+            autoAlpha: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 98%",
+              end: "top 55%",
+              scrub: 0.8,
+            },
+          },
+        );
+      });
+    }, el);
+    return () => ctx.revert();
+  }, []);
+  return (
+    <div ref={ref} className="missions-stage mt-12 grid gap-4 sm:grid-cols-2">
+      {children}
     </div>
   );
 }

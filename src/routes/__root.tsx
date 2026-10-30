@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { LanguageProvider } from "@/lib/language";
+import { MotionRoot } from "@/components/motion/motion-root";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
 
@@ -18,6 +19,12 @@ export const Route = createRootRoute({
           "Student association at the University of Geneva. Training, market analysis, conferences and networking. Connecting Academia to Global Trade.",
       },
       { name: "theme-color", content: "#0c1c1e" },
+    ],
+    scripts: [
+      {
+        children:
+          "document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reduced-motion')",
+      },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -38,6 +45,7 @@ export const Route = createRootRoute({
       <body className="antialiased">
         <AuthProvider>
           <LanguageProvider>
+            <MotionRoot />
             <Outlet />
             <Toaster
               position="bottom-right"
