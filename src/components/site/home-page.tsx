@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Activity, ArrowDownRight, ArrowUpRight, BookOpen, Linkedin, Mic2, Waypoints } from "lucide-react";
+import { Activity, ArrowDownRight, ArrowUpRight, BookOpen, Mic2, Waypoints } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { CountUp } from "@/components/motion/count-up";
 import { Marquee } from "@/components/motion/marquee";
@@ -8,9 +8,11 @@ import { SplitText } from "@/components/motion/split-text";
 import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
 import { HeroPanels } from "@/components/site/hero-panels";
 import { JoinForm } from "@/components/site/join-form";
+import { NewsSection } from "@/components/site/news-section";
+import { TeamSequence } from "@/components/team/team-sequence";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
 import { Sparkline } from "@/components/site/sparkline";
-import { founders } from "@/lib/content";
 import { useGenevaClock } from "@/lib/hooks";
 import { useLanguage } from "@/lib/language";
 import { COMMODITIES, formatChange, formatPrice } from "@/lib/markets";
@@ -107,6 +109,46 @@ export function HomePage() {
 
       <Marquee text="Geneva University Commodities Club" />
 
+      <section id="fondateurs" className="scroll-mt-24 bg-paper text-ink">
+        <div className="mx-auto max-w-6xl px-4 pb-14 pt-20 sm:px-6 lg:pt-28">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <Reveal>
+              <p className="font-display text-xs uppercase tracking-widest text-copper">{t.founders.kicker}</p>
+              <SplitText text={t.founders.title} className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="max-w-lg font-serif text-lg leading-relaxed text-ink/80">{t.founders.lead}</p>
+            </Reveal>
+          </div>
+
+          <Reveal delay={40}>
+            <figure className="mt-10">
+              <Parallax reveal amount={14} className="aspect-video rounded-xl">
+                <img
+                  src="/founders-group.jpg"
+                  alt={t.founders.photoCaption}
+                  className="size-full object-cover object-top"
+                />
+              </Parallax>
+              <figcaption className="mt-3 px-1 font-display text-xs uppercase tracking-widest text-ink/50">
+                {t.founders.photoCaption}
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+        <div className="mx-auto max-w-6xl px-4 pb-6 sm:px-6 lg:max-w-none lg:px-0 lg:pb-0">
+          <TeamSequence />
+        </div>
+        <div className="mx-auto flex max-w-6xl justify-center px-4 py-14 sm:px-6">
+          <Button asChild size="lg">
+            <Link to="/team">
+              {t.founders.meet}
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+
       <section id="marches" className="scroll-mt-24 border-t border-copper/20 bg-ink">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <Reveal>
@@ -176,65 +218,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="fondateurs" className="scroll-mt-24 bg-paper text-ink">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-          <Reveal>
-            <p className="font-display text-xs uppercase tracking-widest text-copper">{t.founders.kicker}</p>
-            <SplitText text={t.founders.title} className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
-          </Reveal>
-
-          <Reveal delay={40}>
-            <figure className="mt-10">
-              <Parallax reveal amount={14} className="aspect-video rounded-xl">
-                <img
-                  src="/founders-group.jpg"
-                  alt={t.founders.photoCaption}
-                  className="size-full object-cover object-top"
-                />
-              </Parallax>
-              <figcaption className="mt-3 px-1 font-display text-xs uppercase tracking-widest text-ink/50">
-                {t.founders.photoCaption}
-              </figcaption>
-            </figure>
-          </Reveal>
-
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {founders.map((f, i) => (
-              <Reveal key={f.id} delay={i * 120}>
-                <article data-tilt="12" className="glow-card group h-full overflow-hidden rounded-xl bg-navy text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.28)]">
-                  <div className="relative aspect-square overflow-hidden">
-                    <img
-                      src={f.image}
-                      alt={f.name}
-                      className="size-full object-cover object-top transition-transform duration-[var(--motion-slow)] ease-[var(--ease-out)] group-hover:scale-[1.08]"
-                    />
-                  </div>
-                  <div className="space-y-3 p-5">
-                    <div className="flex items-start justify-between gap-2">
-                      <div>
-                        <h3 className="font-display text-xl font-semibold uppercase tracking-wide">{f.name}</h3>
-                        <p className="mt-1 font-display text-xs uppercase tracking-widest text-wheat">
-                          {f.role[lang]}
-                        </p>
-                      </div>
-                      <a
-                        href={f.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={`${t.founders.linkedin} ${f.name}`}
-                        className="inline-flex size-11 shrink-0 items-center justify-center rounded-md text-ice transition-colors duration-[var(--motion-quick)] hover:bg-copper/20 hover:text-wheat"
-                      >
-                        <Linkedin className="size-4" />
-                      </a>
-                    </div>
-                    <p className="font-serif text-sm leading-relaxed text-ice/90">{f.bio[lang]}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <NewsSection />
 
       <section id="rejoindre" className="scroll-mt-24 bg-ink">
         <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:py-28 lg:pb-32">
@@ -247,7 +231,7 @@ export function HomePage() {
               to="/contact"
               className="mt-6 inline-block font-display text-sm uppercase tracking-widest text-wheat underline-offset-4 hover:underline"
             >
-              info@guccgeneva.com
+              gucc@unige.ch
             </Link>
           </Reveal>
           <Reveal delay={80}>

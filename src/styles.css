@@ -481,6 +481,8 @@
 .menu-links.is-open > :nth-child(4) { transition-delay: 270ms; }
 .menu-links.is-open > :nth-child(5) { transition-delay: 320ms; }
 .menu-links.is-open > :nth-child(6) { transition-delay: 370ms; }
+.menu-links.is-open > :nth-child(7) { transition-delay: 420ms; }
+.menu-links.is-open > :nth-child(8) { transition-delay: 470ms; }
 .menu-links > *:hover {
   transform: translateX(8px);
   transition-delay: 0ms;
@@ -504,4 +506,34 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .tick-flash { animation: none; }
+}
+
+/* Team sequence */
+.team-line {
+  animation: team-line 900ms var(--ease-smooth-out) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 150ms);
+}
+@keyframes team-line {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    filter: blur(6px);
+  }
+}
+.reduced-motion .team-pinned {
+  display: none !important;
+}
+.reduced-motion .team-list {
+  display: grid !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-pinned {
+    display: none !important;
+  }
+  .team-list {
+    display: grid !important;
+  }
+  .team-line {
+    animation: none;
+  }
 }

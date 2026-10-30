@@ -8,8 +8,26 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/jeremy-lbrt/",
     role: { fr: "Président", en: "President" },
     bio: {
-      fr: "Président du Comité. Il représente l'association vis-à-vis des tiers, convoque l'Assemblée générale et pilote la stratégie du club au sein de l'Université de Genève.",
-      en: "President of the Committee. He represents the association vis-à-vis third parties, convenes the General Assembly and steers club strategy at the University of Geneva.",
+      fr: "Président du Comité. Étudiant du Master of Science in Commodity Trading de l'UNIGE et Trading Assistant chez Sucafina, il tourne entre finance, logistique, trading et risque dans le négoce de café physique. Ancien vice-président du Geneva University Investment Club.",
+      en: "President of the Committee. MSc in Commodity Trading student at UNIGE and Trading Assistant at Sucafina, he rotates across finance, logistics, trading and risk in the physical coffee trade. Former Vice-President of the Geneva University Investment Club.",
+    },
+    facts: {
+      fr: ["MSc Commodity Trading, UNIGE", "Trading Assistant, Sucafina", "Ancien vice-président du GUIC", "Conférence Vontobel et Bilan, 150 participants"],
+      en: ["MSc Commodity Trading, UNIGE", "Trading Assistant, Sucafina", "Former Vice-President, GUIC", "Vontobel and Bilan conference, 150 guests"],
+    },
+    long: {
+      fr: [
+        "Jérémy préside le Comité. Il représente l'association vis-à-vis des tiers, convoque l'Assemblée générale et pilote la stratégie du club au sein de l'Université de Genève.",
+        "Titulaire d'un Bachelor en économie de l'Université de Genève (2022 à 2025), il a commencé en septembre 2026 le Master of Science in Commodity Trading de l'UNIGE. En parallèle, il a rejoint Sucafina à Genève comme Trading Assistant : il tourne entre les départements Finance, Logistique, Trading et Risque pour apprendre le côté physique du négoce de café, dans l'esprit du modèle « Farm to Roaster » du groupe.",
+        "Avant le GUCC, il a passé deux ans au Geneva University Investment Club. Membre du département Commodities, puis responsable du département Technologie, il y a dirigé une équipe de dix personnes en modélisation financière et thèses d'investissement (une thèse acheteuse sur Broadcom a atteint son objectif de 34 % en un mois). Il en a été vice-président de décembre 2024 à août 2025 et dirige aujourd'hui son réseau d'alumni.",
+        "En mars 2025, il a co-organisé avec le GUIC une conférence en partenariat avec Vontobel et Bilan sur la manière dont la technologie démocratise l'investissement chez les jeunes. Elle a réuni 150 participants.",
+      ],
+      en: [
+        "Jérémy chairs the Committee. He represents the association towards third parties, convenes the General Assembly and steers the club's strategy at the University of Geneva.",
+        "He holds a Bachelor in Economics from the University of Geneva (2022 to 2025) and started UNIGE's Master of Science in Commodity Trading in September 2026. In parallel he joined Sucafina in Geneva as a Trading Assistant, rotating across the Finance, Logistics, Trading and Risk departments to learn the physical side of the coffee trade from the ground up, in the spirit of the group's Farm to Roaster model.",
+        "Before GUCC he spent two years at the Geneva University Investment Club. First a member of the Commodity department, then Head of the Technology department, he led a team of ten on financial modelling and investment theses (a buy side thesis on Broadcom hit its 34% take profit within a month). He was Vice-President from December 2024 to August 2025 and now leads its Alumni Network.",
+        "In March 2025 he co-organised, with the GUIC, a conference in partnership with Vontobel and Bilan on how technology is democratising investment for young people. It welcomed 150 participants.",
+      ],
     },
   },
   {
@@ -19,8 +37,26 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/arisismajli/",
     role: { fr: "Vice-président", en: "Vice-President" },
     bio: {
-      fr: "Vice-président du Comité. Private Client Advisor au Growth desk d'UBS Bel-Air à Genève, il relie le club à la place financière et au négoce.",
-      en: "Vice-President of the Committee. Private Client Advisor on the Growth desk at UBS Bel-Air in Geneva, he connects the club to the city's financial and trading community.",
+      fr: "Vice-président du Comité. Private Client Advisor au desk Growth d'UBS Bel-Air à Genève et étudiant en Bachelor d'économie et management à l'UNIGE. Il préside aussi le Geneva University Investment Club.",
+      en: "Vice-President of the Committee. Private Client Advisor on the Growth desk at UBS Bel-Air in Geneva and Bachelor student in Economics and Management at UNIGE. He is also President of the Geneva University Investment Club.",
+    },
+    facts: {
+      fr: ["Private Client Advisor, UBS Bel-Air", "Président du GUIC", "Un été sur le trading floor de Pictet", "A construit seul une voiture de course"],
+      en: ["Private Client Advisor, UBS Bel-Air", "President, GUIC", "A summer on the Pictet trading floor", "Built a race car on his own"],
+    },
+    long: {
+      fr: [
+        "Aris est vice-président du Comité. Il termine son Bachelor en économie et management à l'Université de Genève tout en travaillant dans la banque.",
+        "Depuis septembre 2026, il est Private Client Advisor dans le segment Growth d'UBS Bel-Air : conseil en placement, ouverture de comptes et prévoyance. Auparavant, il a passé un an dans l'équipe Migration Expert d'UBS lors de l'intégration de Credit Suisse, en traitant plus de 1 000 demandes de clients par mois.",
+        "Son intérêt pour les marchés est né sur le trading floor de Pictet, où il a passé un été en rotation entre actions, obligations, dérivés et change, en travaillant sur le pricing d'options avec Black-Scholes. Il suit les marchés de près et gère son propre portefeuille en actions, ETF et matières premières.",
+        "Au Geneva University Investment Club, il a été élu responsable du nouveau département Cryptomonnaies en 2025, puis président en 2026, à la tête d'une communauté d'environ 45 membres actifs autour d'un vrai portefeuille. Hors de la finance, il a passé trois ans à construire seul une voiture de course, entièrement de zéro. Sa leçon : la précision bat la vitesse.",
+      ],
+      en: [
+        "Aris is Vice-President of the Committee. He is completing his Bachelor in Economics and Management at the University of Geneva while working in banking.",
+        "Since September 2026 he has been a Private Client Advisor in the Growth segment at UBS Bel-Air, covering investment advice, account opening and pension planning. Before that he spent a year on the UBS Migration Expert team during the Credit Suisse integration, handling more than 1,000 client requests a month.",
+        "His interest in markets started on the trading floor at Pictet, where he spent a summer rotating across equities, fixed income, derivatives and FX and worked on options pricing with Black-Scholes. He follows the markets closely and runs his own portfolio across equities, ETFs and commodities.",
+        "At the Geneva University Investment Club he was elected Head of the new Cryptocurrency department in 2025 and President in 2026, leading a community of about 45 active members around a real portfolio. Outside finance he spent three years building a race car on his own, entirely from the ground up. His lesson: precision beats speed.",
+      ],
     },
   },
   {
@@ -30,8 +66,26 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/rafael-calado-bb5a5b293",
     role: { fr: "Co-fondateur", en: "Co-founder" },
     bio: {
-      fr: "Co-fondateur. Il contribue à bâtir le programme académique du club : ateliers, cas pratiques et simulations de marchés.",
-      en: "Co-founder. He helps shape the club's academic programme: workshops, case work and market simulations.",
+      fr: "Co-fondateur. Ancien président du Geneva University Investment Club, où il a préparé le partenariat avec Vontobel, il a ensuite rejoint Taranis entre opérations de fonds et analyse fondamentale. Il façonne le programme académique du club.",
+      en: "Co-founder. Former President of the Geneva University Investment Club, where he prepared its partnership with Vontobel, he then joined Taranis across fund operations and fundamental analysis. He shapes the club's academic programme.",
+    },
+    facts: {
+      fr: ["Ancien président du GUIC", "Opérations et analyse, Taranis", "Partenariat et conférence IA avec Vontobel", "Certifié Bloomberg Market Concepts"],
+      en: ["Former President, GUIC", "Operations and analysis, Taranis", "Vontobel partnership and AI conference", "Bloomberg Market Concepts certified"],
+    },
+    long: {
+      fr: [
+        "Rafael est co-fondateur du club. Il contribue à bâtir son programme académique : ateliers, cas pratiques et simulations de marchés.",
+        "Il a présidé le Geneva University Investment Club jusqu'au début de 2025. Il a rendu visite à Vontobel Genève pour finaliser le partenariat entre la banque et le GUIC, et a accueilli en décembre 2024 à Uni Mail une conférence publique avec des experts de Vontobel sur la manière dont l'intelligence artificielle transforme les choix d'investissement.",
+        "Il a ensuite rejoint Taranis, où il a travaillé dans plusieurs départements jusqu'en décembre 2025 : soutien opérationnel à la gestion du fonds et analyse fondamentale approfondie, avec le suivi de la stratégie d'investissement et des principaux développements de marché et d'entreprises.",
+        "Il est certifié Bloomberg Market Concepts (2026), titulaire de certificats Financial Edge en modélisation financière sur Excel et en comparables boursiers (2024), et a suivi le Finance Accelerator d'AmplifyME.",
+      ],
+      en: [
+        "Rafael is a co-founder of the club. He helps shape its academic programme: workshops, case work and market simulations.",
+        "He led the Geneva University Investment Club as President until early 2025. He visited Vontobel Geneva to put the finishing touches on the partnership between the bank and the GUIC, and in December 2024 hosted a public conference at Uni Mail with Vontobel experts on how artificial intelligence is transforming investment choices.",
+        "He then joined Taranis, where he worked across several departments until December 2025, contributing to operational support for the fund and to in-depth fundamental analysis, tracking the investment strategy and key market and company developments.",
+        "He holds the Bloomberg Market Concepts certification (2026), Financial Edge certificates in Excel financial modelling and trading comparables (2024), and completed the AmplifyME Finance Accelerator.",
+      ],
     },
   },
   {
@@ -41,8 +95,26 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/mamadou-bah-82247929b/",
     role: { fr: "Co-fondateur", en: "Co-founder" },
     bio: {
-      fr: "Co-fondateur. Actif à la Banque Cantonale Vaudoise, il développe les liens du club avec les banques et les desks de la place genevoise.",
-      en: "Co-founder. Active at Banque Cantonale Vaudoise, he develops the club's ties with banks and trading desks across Geneva.",
+      fr: "Co-fondateur. Étudiant en MSc Finance à HEC Lausanne et candidat au certificat d'opérateur SUISSENÉGOCE. Il a géré la logistique de carburants alternatifs chez BFC Biofuel Consulting et effectué un stage à la Banque Cantonale Vaudoise.",
+      en: "Co-founder. MSc in Finance student at HEC Lausanne working towards the SUISSENÉGOCE Operator's Certificate. He has handled alternative fuel logistics at BFC Biofuel Consulting and interned at Banque Cantonale Vaudoise.",
+    },
+    facts: {
+      fr: ["MSc Finance, HEC Lausanne", "Certificat d'opérateur SUISSENÉGOCE", "Biocarburants, BFC Biofuel Consulting", "Ancien Head of Corporate Relations, GUIC"],
+      en: ["MSc Finance, HEC Lausanne", "SUISSENÉGOCE Operator's Certificate", "Biofuels, BFC Biofuel Consulting", "Former Head of Corporate Relations, GUIC"],
+    },
+    long: {
+      fr: [
+        "Mamadou est co-fondateur du club. Il apporte au Comité une vision physique et opérationnelle des matières premières.",
+        "Diplômé d'un Bachelor en économie de la Geneva School of Economics and Management (UNIGE, 2022 à 2025), il poursuit un MSc en finance à HEC Lausanne et prépare le certificat d'opérateur de la SUISSENÉGOCE Academy, l'association suisse du négoce et de l'affrètement.",
+        "Chez BFC Biofuel Consulting, fin 2025, il a travaillé sur la chaîne de production d'UCOME, un biodiesel issu d'huile de cuisson recyclée, de la collecte à la purification. Il a soutenu la commercialisation de carburants alternatifs auprès de clients du transport routier et lourd, et coordonné des livraisons dans toute la Suisse par camion-citerne et conteneur ISO, en lien avec des majors pétrolières et des distributeurs privés.",
+        "Auparavant, lors d'un stage d'été à la Banque Cantonale Vaudoise à Lausanne (2025), il a construit des benchmarks sectoriels comparatifs pour appuyer les décisions d'investissement. Au Geneva University Investment Club, il est passé de membre à responsable du département Goods & Services, puis Head of Corporate Relations, chargé des partenariats avec les entreprises. Il travaille en français et en anglais.",
+      ],
+      en: [
+        "Mamadou is a co-founder of the club. He brings a physical, operational view of commodities to the Committee.",
+        "He graduated with a Bachelor in Economics from the Geneva School of Economics and Management (UNIGE, 2022 to 2025) and is now pursuing an MSc in Finance at HEC Lausanne, alongside the Operator's Certificate of the SUISSENÉGOCE Academy, the Swiss trading and shipping association.",
+        "At BFC Biofuel Consulting in late 2025 he worked on the production pipeline of UCOME, a biodiesel made from recycled cooking oil, from collection to purification. He supported the commercialisation of alternative fuels for automotive and heavy transport clients and coordinated deliveries across Switzerland by tanker truck and ISO container, working with oil majors and private distributors.",
+        "Earlier, during a summer internship at Banque Cantonale Vaudoise in Lausanne (2025), he built comparative sector benchmarks to support investment and strategic decisions. At the Geneva University Investment Club he went from member to Head of the Goods & Services department, then Head of Corporate Relations, in charge of partnerships with companies. He works in French and English.",
+      ],
     },
   },
 ] as const;
@@ -90,6 +162,8 @@ export const copy = {
       missions: "Missions",
       markets: "Marchés",
       founders: "Fondateurs",
+      team: "L'équipe",
+      news: "Actualités",
       join: "Rejoindre",
       statutes: "Statuts",
       menu: "Menu",
@@ -164,6 +238,27 @@ export const copy = {
       title: "Quatre fondateurs. Un même fuseau : Genève.",
       linkedin: "Profil LinkedIn",
       photoCaption: "Les quatre fondateurs.",
+      lead: "Banque, négoce physique, gestion de fonds et finance : quatre parcours, une même école. Tous les quatre sont passés par le Geneva University Investment Club avant de fonder le GUCC.",
+      meet: "Rencontrer l'équipe",
+      facts: "En bref",
+      scroll: "Faites défiler",
+    },
+    team: {
+      kicker: "L'équipe",
+      title: "Ceux qui ont fondé le club.",
+      lead: "Quatre étudiants de l'Université de Genève et de HEC Lausanne, entre banque privée, négoce de café, gestion de fonds et biocarburants.",
+      back: "Retour",
+      background: "Parcours",
+      linkedin: "Voir le profil LinkedIn",
+    },
+    news: {
+      kicker: "Actualités",
+      title: "Le carnet du club.",
+      lead: "Nos annonces, publiées d'abord sur LinkedIn.",
+      follow: "Suivre le GUCC sur LinkedIn",
+      followLead: "Les prochains ateliers, panels et rencontres seront annoncés sur notre page LinkedIn.",
+      read: "Lire sur LinkedIn",
+      open: "Lire",
     },
     join: {
       kicker: "Adhésion",
@@ -201,7 +296,7 @@ export const copy = {
       statutes: "Lire les statuts",
       rights: "Geneva University Commodities Club",
       contact: "Contact",
-      email: "info@guccgeneva.com",
+      email: "gucc@unige.ch",
     },
     contactPage: {
       kicker: "Le desk",
@@ -234,6 +329,8 @@ export const copy = {
       missions: "Missions",
       markets: "Markets",
       founders: "Founders",
+      team: "The team",
+      news: "News",
       join: "Join",
       statutes: "Bylaws",
       menu: "Menu",
@@ -308,6 +405,27 @@ export const copy = {
       title: "Four founders. One timezone: Geneva.",
       linkedin: "LinkedIn profile",
       photoCaption: "The four founders.",
+      lead: "Banking, physical trading, fund management and finance: four paths, one school. All four came through the Geneva University Investment Club before founding GUCC.",
+      meet: "Meet the team",
+      facts: "Key facts",
+      scroll: "Scroll",
+    },
+    team: {
+      kicker: "The team",
+      title: "The people who founded the club.",
+      lead: "Four students from the University of Geneva and HEC Lausanne, between private banking, coffee trading, fund management and biofuels.",
+      back: "Back",
+      background: "Background",
+      linkedin: "View LinkedIn profile",
+    },
+    news: {
+      kicker: "News",
+      title: "The club's logbook.",
+      lead: "Our announcements, published first on LinkedIn.",
+      follow: "Follow GUCC on LinkedIn",
+      followLead: "Upcoming workshops, panels and meetups will be announced on our LinkedIn page.",
+      read: "Read on LinkedIn",
+      open: "Read",
     },
     join: {
       kicker: "Membership",
@@ -345,7 +463,7 @@ export const copy = {
       statutes: "Read the bylaws",
       rights: "Geneva University Commodities Club",
       contact: "Contact",
-      email: "info@guccgeneva.com",
+      email: "gucc@unige.ch",
     },
     contactPage: {
       kicker: "The desk",

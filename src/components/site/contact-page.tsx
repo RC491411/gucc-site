@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/lib/language";
 
-const EMAIL = "info@guccgeneva.com";
+const EMAIL = "gucc@unige.ch";
 
 function mailTo(subject?: string, body?: string) {
   const parts: string[] = [];

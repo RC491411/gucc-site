@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils";
 const LINKS = [
   { href: "/#club", key: "club" as const },
   { href: "/#missions", key: "missions" as const },
-  { href: "/#marches", key: "markets" as const },
   { href: "/#fondateurs", key: "founders" as const },
+  { href: "/#marches", key: "markets" as const },
+  { href: "/#news", key: "news" as const },
 ];
 
 export function Nav() {
@@ -133,7 +134,7 @@ export function Nav() {
               <X className="size-5" />
             </button>
           </div>
-          <nav data-lenis-prevent className={cn("menu-links flex flex-1 flex-col gap-1 px-6 pb-10 pt-4", open && "is-open")}>
+          <nav data-lenis-prevent className={cn("menu-links flex flex-1 flex-col gap-1 overflow-y-auto px-6 pb-10 pt-4", open && "is-open")}>
             {LINKS.map((l) => (
               <a
                 key={l.href}
@@ -145,6 +146,14 @@ export function Nav() {
                 {t.nav[l.key]}
               </a>
             ))}
+            <Link
+              to="/team"
+              tabIndex={open ? 0 : -1}
+              onClick={() => setOpen(false)}
+              className="flex min-h-14 items-center font-serif text-2xl text-paper transition-colors duration-[var(--motion-quick)] hover:text-wheat"
+            >
+              {t.nav.team}
+            </Link>
             <Link
               to="/statuts"
               tabIndex={open ? 0 : -1}
