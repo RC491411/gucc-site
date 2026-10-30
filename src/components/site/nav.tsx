@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { BrandMark } from "@/components/site/brand-mark";
+import { HeaderBrand } from "@/components/site/header-brand";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language";
 import { getLenis } from "@/lib/motion";
@@ -71,7 +72,7 @@ export function Nav() {
 
           <div className="pointer-events-none absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center">
             <div className="pointer-events-auto">
-              <BrandMark compact />
+              <HeaderBrand />
             </div>
           </div>
 
