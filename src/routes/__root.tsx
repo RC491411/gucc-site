@@ -3,6 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { LanguageProvider } from "@/lib/language";
 import { MotionRoot } from "@/components/motion/motion-root";
 import { Toaster } from "sonner";
+import { NotFound } from "@/components/site/not-found";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Geneva University Commodities Club";
@@ -37,6 +38,7 @@ export const Route = createRootRoute({
       },
     ],
   }),
+  notFoundComponent: NotFound,
   component: () => (
     <html lang="en" suppressHydrationWarning>
       <head>
