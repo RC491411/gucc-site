@@ -189,7 +189,7 @@ export const copy = {
     club: {
       kicker: "Le club",
       title: "Une association étudiante, un pont vers le marché.",
-      body: "Créé le 1er septembre 2026, le Geneva University Commodities Club (GUCC) est une association étudiante à but non lucratif, basée à Genève. Elle est affranchie de toute orientation politique ou religieuse.",
+      body: "Créé le 1er septembre 2026, le Geneva University Commodities Club (GUCC) est une association étudiante à but non lucratif, basée à Genève.",
       aside: "Cercle volontairement restreint. Dix membres au maximum, pour rester proches des desks, des personnes et du marché.",
     },
     missions: {
@@ -374,7 +374,7 @@ export const copy = {
     club: {
       kicker: "The club",
       title: "A student association. A bridge into the market.",
-      body: "Established on 1 September 2026, the Geneva University Commodities Club (GUCC) is a non-profit student association based in Geneva. It has no political or religious affiliation.",
+      body: "Established on 1 September 2026, the Geneva University Commodities Club (GUCC) is a non-profit student association based in Geneva.",
       aside: "A deliberately small circle. Ten members at most, to stay close to the desks, the people and the market.",
     },
     missions: {

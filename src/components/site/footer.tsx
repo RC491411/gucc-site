@@ -11,7 +11,6 @@ export function Footer() {
           <div data-magnetic="0.2" className="w-fit">
             <BrandMark />
           </div>
-          <p className="font-serif text-sm text-steel">{t.footer.indep}</p>
         </div>
         <div className="flex flex-col items-start gap-2 lg:items-end">
           <nav className="flex flex-wrap gap-x-5 gap-y-2 lg:justify-end">
