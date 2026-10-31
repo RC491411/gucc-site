@@ -37,23 +37,23 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/arisismajli/",
     role: { fr: "Vice-président", en: "Vice-President" },
     bio: {
-      fr: "Vice-président du Comité. Private Client Advisor au desk Growth d'UBS Bel-Air à Genève et étudiant en Bachelor d'économie et management à l'UNIGE. Il préside aussi le Geneva University Investment Club.",
-      en: "Vice-President of the Committee. Private Client Advisor on the Growth desk at UBS Bel-Air in Geneva and Bachelor student in Economics and Management at UNIGE. He is also President of the Geneva University Investment Club.",
+      fr: "Vice-président du Comité. Private Client Advisor au desk Growth d'UBS à Genève et étudiant en Bachelor d'économie et management à l'UNIGE. Il préside aussi le Geneva University Investment Club.",
+      en: "Vice-President of the Committee. Private Client Advisor on the Growth desk at UBS in Geneva and Bachelor student in Economics and Management at UNIGE. He is also President of the Geneva University Investment Club.",
     },
     facts: {
-      fr: ["Private Client Advisor, UBS Bel-Air", "Président du GUIC", "Un été sur le trading floor de Pictet", "A construit seul une voiture de course"],
-      en: ["Private Client Advisor, UBS Bel-Air", "President, GUIC", "A summer on the Pictet trading floor", "Built a race car on his own"],
+      fr: ["Private Client Advisor, UBS", "Président du GUIC", "Étudiant à la GSEM, UNIGE", "A construit seul une voiture de course"],
+      en: ["Private Client Advisor, UBS", "President, GUIC", "Student at GSEM, UNIGE", "Built a race car on his own"],
     },
     long: {
       fr: [
         "Aris est vice-président du Comité. Il termine son Bachelor en économie et management à l'Université de Genève tout en travaillant dans la banque.",
-        "Depuis septembre 2026, il est Private Client Advisor dans le segment Growth d'UBS Bel-Air : conseil en placement, ouverture de comptes et prévoyance. Auparavant, il a passé un an dans l'équipe Migration Expert d'UBS lors de l'intégration de Credit Suisse, en traitant plus de 1 000 demandes de clients par mois.",
+        "Depuis septembre 2026, il est Private Client Advisor dans le segment Growth d'UBS : conseil en placement, ouverture de comptes et prévoyance. Auparavant, il a passé un an dans l'équipe Migration Expert d'UBS lors de l'intégration de Credit Suisse, en traitant plus de 1 000 demandes de clients par mois.",
         "Son intérêt pour les marchés est né sur le trading floor de Pictet, où il a passé un été en rotation entre actions, obligations, dérivés et change, en travaillant sur le pricing d'options avec Black-Scholes. Il suit les marchés de près et gère son propre portefeuille en actions, ETF et matières premières.",
         "Au Geneva University Investment Club, il a été élu responsable du nouveau département Cryptomonnaies en 2025, puis président en 2026, à la tête d'une communauté d'environ 45 membres actifs autour d'un vrai portefeuille. Hors de la finance, il a passé trois ans à construire seul une voiture de course, entièrement de zéro. Sa leçon : la précision bat la vitesse.",
       ],
       en: [
         "Aris is Vice-President of the Committee. He is completing his Bachelor in Economics and Management at the University of Geneva while working in banking.",
-        "Since September 2026 he has been a Private Client Advisor in the Growth segment at UBS Bel-Air, covering investment advice, account opening and pension planning. Before that he spent a year on the UBS Migration Expert team during the Credit Suisse integration, handling more than 1,000 client requests a month.",
+        "Since September 2026 he has been a Private Client Advisor in the Growth segment at UBS, covering investment advice, account opening and pension planning. Before that he spent a year on the UBS Migration Expert team during the Credit Suisse integration, handling more than 1,000 client requests a month.",
         "His interest in markets started on the trading floor at Pictet, where he spent a summer rotating across equities, fixed income, derivatives and FX and worked on options pricing with Black-Scholes. He follows the markets closely and runs his own portfolio across equities, ETFs and commodities.",
         "At the Geneva University Investment Club he was elected Head of the new Cryptocurrency department in 2025 and President in 2026, leading a community of about 45 active members around a real portfolio. Outside finance he spent three years building a race car on his own, entirely from the ground up. His lesson: precision beats speed.",
       ],
@@ -70,8 +70,8 @@ export const founders = [
       en: "Co-founder. Former President of the Geneva University Investment Club, where he prepared its partnership with Vontobel, he then joined Taranis across fund operations and fundamental analysis. He shapes the club's academic programme.",
     },
     facts: {
-      fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Partenariat Vontobel"],
-      en: ["Analyst at Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Former President, GUIC", "Vontobel partnership"],
+      fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Partenariat et conférence IA avec Vontobel"],
+      en: ["Analyst at Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Former President, GUIC", "Vontobel partnership and AI conference"],
     },
     long: {
       fr: [
