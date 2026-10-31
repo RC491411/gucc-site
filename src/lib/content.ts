@@ -70,8 +70,8 @@ export const founders = [
       en: "Co-founder. Former President of the Geneva University Investment Club, where he prepared its partnership with Vontobel, he then joined Taranis across fund operations and fundamental analysis. He shapes the club's academic programme.",
     },
     facts: {
-      fr: ["Ancien président du GUIC", "Opérations et analyse, Taranis", "Partenariat et conférence IA avec Vontobel", "Certifié Bloomberg Market Concepts"],
-      en: ["Former President, GUIC", "Operations and analysis, Taranis", "Vontobel partnership and AI conference", "Bloomberg Market Concepts certified"],
+      fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Partenariat Vontobel"],
+      en: ["Analyst at Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Former President, GUIC", "Vontobel partnership"],
     },
     long: {
       fr: [
