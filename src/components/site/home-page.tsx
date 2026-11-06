@@ -36,7 +36,7 @@ export function HomePage() {
           </Reveal>
           <Reveal delay={80}>
             <aside data-tilt="10" className="glow-card rounded-xl bg-navy p-6 text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8">
-              <img src="/mark.png" alt="" className="drop-pulse size-12" />
+              <img src="/mark.png?v=3" alt="" className="drop-pulse size-12 outline-none" />
               <p className="mt-5 font-serif text-base leading-relaxed text-ice">{t.club.aside}</p>
             </aside>
           </Reveal>

@@ -125,7 +125,7 @@ export function HeroPanels() {
         <div ref={content} className="relative flex flex-col items-center">
           <div data-depth="22" className="relative">
             <div data-hero-logo>
-            <img src="/mark.png" alt="" className="relative size-24 outline-none drop-pulse sm:size-32" />
+            <img src="/mark.png?v=3" alt="" className="relative size-24 outline-none drop-pulse sm:size-32" />
             </div>
           </div>
           <div data-depth="10" className="flex flex-col items-center">

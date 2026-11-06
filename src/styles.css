@@ -87,6 +87,7 @@
   }
 
   img[src$=".svg"],
+  img[src*="mark.png"],
   img.outline-none {
     outline: none;
   }
