@@ -7,9 +7,9 @@ const COLLAPSE_AT = 72;
 const EXPAND_AT = 36;
 
 /**
- * Centred header logo. At the top of the page the full official brand mark is shown;
- * once the page scrolls, it collapses to the C+droplet mark only. Scrolling back to the
- * top restores the full logo.
+ * Centred header brand. At the top of the page: C mark + wordmark to the right
+ * (GENEVA UNIVERSITY / COMMODITIES CLUB). On scroll it collapses to the mark only;
+ * scrolling back to the top restores the full horizontal brand.
  */
 export function HeaderBrand() {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -72,12 +72,27 @@ export function HeaderBrand() {
       data-collapsed="false"
       className="group/brand relative flex h-14 min-w-[3.25rem] items-center justify-center sm:h-16 sm:min-w-[4rem]"
     >
-      <img
+      {/* Expanded: mark + wordmark to the right (no stacked logo.png) */}
+      <span
         data-brand-full
-        src="/logo.png"
-        alt=""
-        className="h-12 w-auto max-w-[min(52vw,14rem)] outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.28)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.5)] sm:h-14 sm:max-w-[16rem]"
-      />
+        className="flex items-center gap-2.5 outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.28)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.5)] sm:gap-3"
+      >
+        <img
+          src="/mark.png"
+          alt=""
+          className="size-9 shrink-0 sm:size-11"
+        />
+        <span className="flex min-w-0 flex-col leading-none">
+          <span className="font-display text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-paper sm:text-[0.72rem] sm:tracking-[0.16em]">
+            Geneva University
+          </span>
+          <span className="mt-0.5 font-display text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-copper sm:mt-1 sm:text-[0.65rem] sm:tracking-[0.16em]">
+            Commodities Club
+          </span>
+        </span>
+      </span>
+
+      {/* Collapsed: mark only (spins in on scroll) */}
       <img
         data-brand-mark
         src="/mark.png"
