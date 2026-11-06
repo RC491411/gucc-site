@@ -17,10 +17,62 @@ const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 const INTERESTS = ["join", "question", "partnership", "other"] as const;
 type Interest = (typeof INTERESTS)[number];
-type State = "idle" | "sending" | "success" | "error";
+type State = "idle" | "sending" | "success" | "activation" | "error";
 
 function mailTo() {
   return `mailto:${CONTACT_EMAIL}`;
+}
+
+
+type FormSubmitResult = {
+  ok: boolean;
+  needsActivation: boolean;
+  message: string;
+};
+
+async function postFormSubmit(payload: Record<string, string>): Promise<FormSubmitResult> {
+  const parse = async (res: Response): Promise<FormSubmitResult> => {
+    const raw = await res.text();
+    let data: { success?: string | boolean; message?: string } = {};
+    try {
+      data = JSON.parse(raw) as typeof data;
+    } catch {
+      /* Cloudflare / HTML error pages are not JSON */
+    }
+    const message = String(data.message ?? raw ?? "");
+    const needsActivation = /activat|confirm your email|confirmation link|needs activation/i.test(message);
+    const success =
+      data.success === true ||
+      data.success === "true" ||
+      (/^\s*ok\s*$/i.test(message) && res.ok);
+    // Activation replies are often success:"false" with an activation message.
+    if (needsActivation) return { ok: false, needsActivation: true, message };
+    return { ok: Boolean(res.ok && success), needsActivation: false, message };
+  };
+
+  // Documented AJAX path: JSON body + Accept application/json.
+  let res = await fetch(FORM_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  // Origin outages (Cloudflare 5xx) or empty bodies: retry once as urlencoded.
+  if (res.status >= 500 || res.status === 408 || res.status === 429) {
+    res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Accept: "application/json",
+      },
+      body: new URLSearchParams(payload),
+    });
+  }
+
+  return parse(res);
 }
 
 export function ContactPage() {
@@ -85,26 +137,26 @@ export function ContactPage() {
       return;
     }
 
+    const payload: Record<string, string> = {
+      name: parsed.data.name,
+      email: parsed.data.from,
+      programme: programme.trim() || "(not given)",
+      request: t.contactPage.interests[interest],
+      message: parsed.data.message,
+      language: lang.toUpperCase(),
+      _subject: "New message from gucc website",
+      _template: "table",
+      _captcha: "false",
+      _replyto: parsed.data.from,
+    };
+
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: parsed.data.name,
-          email: parsed.data.from,
-          programme: programme.trim() || "(not given)",
-          request: t.contactPage.interests[interest],
-          message: parsed.data.message,
-          language: lang.toUpperCase(),
-          _subject: "New message from gucc website",
-          _template: "table",
-          _captcha: "false",
-          _replyto: parsed.data.from,
-          _honey: honey,
-        }),
-      });
-      const data = (await res.json().catch(() => ({}))) as { success?: string | boolean };
-      if (!res.ok || data.success === false || data.success === "false") throw new Error("send failed");
+      const result = await postFormSubmit(payload);
+      if (result.needsActivation) {
+        setState("activation");
+        return;
+      }
+      if (!result.ok) throw new Error(result.message || "send failed");
       setState("success");
       setName("");
       setFrom("");
@@ -269,6 +321,15 @@ export function ContactPage() {
                       aria-hidden
                       className="absolute -left-[9999px] size-px opacity-0"
                     />
+                    {state === "activation" ? (
+                      <div role="status" className="flex gap-3 rounded-md bg-copper/15 p-4 text-ink shadow-[0_0_0_1px_rgb(224_138_46_/_0.55)]">
+                        <Mail className="mt-0.5 size-5 shrink-0 text-copper" />
+                        <div>
+                          <p className="font-display text-sm uppercase tracking-wider">{c.activationTitle}</p>
+                          <p className="mt-1 font-serif text-sm text-navy/80">{c.activationBody}</p>
+                        </div>
+                      </div>
+                    ) : null}
                     {state === "error" ? (
                       <div role="alert" className="form-error flex gap-3 rounded-md bg-down/10 p-4 text-ink shadow-[0_0_0_1px_rgb(224_90_72_/_0.5)]">
                         <AlertTriangle className="mt-0.5 size-5 shrink-0 text-down" />
@@ -279,6 +340,7 @@ export function ContactPage() {
                             <a href={mailTo()} className="underline underline-offset-2">
                               {CONTACT_EMAIL}
                             </a>
+                            .
                           </p>
                         </div>
                       </div>

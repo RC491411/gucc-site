@@ -330,7 +330,9 @@ export const copy = {
       successBody: "Merci. Le Comité vous répondra à l'adresse indiquée.",
       again: "Envoyer un autre message",
       errorTitle: "L'envoi n'a pas abouti.",
-      errorBody: "Réessayez dans un instant ou écrivez-nous directement à gucc.geneva@gmail.com.",
+      errorBody: "Réessayez dans un instant ou écrivez-nous directement à",
+      activationTitle: "Activez le formulaire une fois.",
+      activationBody: "FormSubmit vient d'envoyer un e-mail de confirmation à gucc.geneva@gmail.com. Ouvrez-le, cliquez sur Activate Form, puis renvoyez votre message. Vérifiez aussi Spam / Promotions.",
       fallback: "Ou écrivez directement à",
       errors: {
         required: "Champ requis",
@@ -515,7 +517,9 @@ export const copy = {
       successBody: "Thank you. The Committee will reply to the address you gave.",
       again: "Send another message",
       errorTitle: "The message could not be sent.",
-      errorBody: "Please try again in a moment or write to us directly at gucc.geneva@gmail.com.",
+      errorBody: "Please try again in a moment or write to us directly at",
+      activationTitle: "Activate the form once.",
+      activationBody: "FormSubmit just emailed a confirmation link to gucc.geneva@gmail.com. Open it, click Activate Form, then send your message again. Check Spam / Promotions too.",
       fallback: "Or write directly to",
       errors: {
         required: "Required",
