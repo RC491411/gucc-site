@@ -1,34 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { Fragment, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
 
 const NAME = "Geneva University Commodities Club";
 const COLLAPSE_AT = 72;
 const EXPAND_AT = 36;
 
-function Chars({ text, className }: { text: string; className?: string }) {
-  return (
-    <span className={className}>
-      {text.split(" ").map((word, w, words) => (
-        <Fragment key={w}>
-          <span className="inline-block whitespace-nowrap">
-            {[...word].map((ch, i) => (
-              <span key={i} data-ch className="inline-block will-change-transform">
-                {ch}
-              </span>
-            ))}
-          </span>
-          {w < words.length - 1 ? " " : null}
-        </Fragment>
-      ))}
-    </span>
-  );
-}
-
 /**
- * Centred header logo. At the top of the page the mark sits next to the full club name;
- * once the page scrolls, the letters blur out with a stagger, the name collapses and only
- * the mark stays centred. Scrolling back to the top plays it in reverse.
+ * Centred header logo. At the top of the page the full official brand mark is shown;
+ * once the page scrolls, it collapses to the C+droplet mark only. Scrolling back to the
+ * top restores the full logo.
  */
 export function HeaderBrand() {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -37,9 +18,16 @@ export function HeaderBrand() {
     const el = ref.current;
     if (!el) return;
     const { gsap } = ensureGsap();
-    const mm = gsap.matchMedia();
     let collapsed = false;
     let tl: gsap.core.Timeline | null = null;
+
+    const full = el.querySelector<HTMLElement>("[data-brand-full]");
+    const mark = el.querySelector<HTMLElement>("[data-brand-mark]");
+    if (!full || !mark) return;
+
+    tl = gsap.timeline({ paused: true, defaults: { ease: "power3.inOut" } });
+    tl.to(full, { autoAlpha: 0, scale: 0.86, duration: 0.35, ease: "power2.in" }, 0)
+      .to(mark, { autoAlpha: 1, scale: 1, rotate: 360, duration: 0.7, ease: "power3.inOut" }, 0.08);
 
     const apply = (next: boolean, instant = false) => {
       collapsed = next;
@@ -54,29 +42,8 @@ export function HeaderBrand() {
       }
     };
 
-    mm.add({ wide: "(min-width: 640px)", narrow: "(max-width: 639.98px)" }, (ctx) => {
-      const wide = Boolean(ctx.conditions?.wide);
-      const text = el.querySelector<HTMLElement>(wide ? "[data-brand-wide]" : "[data-brand-narrow]");
-      const mark = el.querySelector<HTMLElement>("[data-brand-mark]");
-      if (!text || !mark) return;
-      const chars = text.querySelectorAll<HTMLElement>("[data-ch]");
-      tl = gsap.timeline({ paused: true, defaults: { ease: "power3.inOut" } });
-      tl.to(chars, {
-        yPercent: -70,
-        autoAlpha: 0,
-        filter: "blur(6px)",
-        duration: 0.32,
-        ease: "power2.in",
-        stagger: { each: 0.011, from: "end" },
-      })
-        .to(text, wide ? { width: 0, marginLeft: 0, duration: 0.55 } : { height: 0, marginTop: 0, duration: 0.45 }, 0.18)
-        .to(mark, { scale: wide ? 1.08 : 1.15, rotate: 360, duration: 0.8, ease: "power3.inOut" }, 0.12);
-      tl.progress(collapsed ? 1 : 0);
-      return () => {
-        tl?.kill();
-        tl = null;
-      };
-    });
+    gsap.set(mark, { autoAlpha: 0, scale: 0.85, rotate: 0 });
+    gsap.set(full, { autoAlpha: 1, scale: 1 });
 
     apply(window.scrollY > COLLAPSE_AT, true);
     let frame = 0;
@@ -93,7 +60,7 @@ export function HeaderBrand() {
     return () => {
       window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(frame);
-      mm.revert();
+      tl?.kill();
     };
   }, []);
 
@@ -103,29 +70,20 @@ export function HeaderBrand() {
       to="/"
       aria-label={NAME}
       data-collapsed="false"
-      className="group/brand flex min-h-11 flex-col items-center justify-center sm:flex-row"
+      className="group/brand relative flex h-14 min-w-[3.25rem] items-center justify-center sm:h-16 sm:min-w-[4rem]"
     >
       <img
-        data-brand-mark
-        src="/mark.svg"
+        data-brand-full
+        src="/logo.png"
         alt=""
-        className="size-9 shrink-0 outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.35)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.6)] sm:size-11"
+        className="h-12 w-auto max-w-[min(52vw,14rem)] outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.28)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.5)] sm:h-14 sm:max-w-[16rem]"
       />
-      <span
-        data-brand-wide
-        aria-hidden
-        className="ml-3 hidden overflow-hidden whitespace-nowrap font-display text-base font-semibold uppercase leading-none tracking-wide sm:block lg:text-lg"
-      >
-        <Chars text="Geneva University" className="block py-0.5 text-paper" />
-        <Chars text="Commodities Club" className="mt-0.5 block py-0.5 text-copper" />
-      </span>
-      <span
-        data-brand-narrow
-        aria-hidden
-        className="mt-1 block overflow-hidden whitespace-nowrap font-display text-[11px] font-semibold uppercase leading-none tracking-[0.32em] sm:hidden"
-      >
-        <Chars text="GUCC" className="block py-0.5 pl-[0.32em] text-wheat" />
-      </span>
+      <img
+        data-brand-mark
+        src="/mark.png"
+        alt=""
+        className="pointer-events-none absolute size-9 outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.35)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.6)] sm:size-11"
+      />
     </Link>
   );
 }

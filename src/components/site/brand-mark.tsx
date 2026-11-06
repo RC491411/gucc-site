@@ -5,20 +5,14 @@ export function BrandMark({ className, compact = false }: { className?: string; 
   return (
     <Link
       to="/"
-      className={cn(
-        "flex min-h-11 items-center gap-2.5 rounded-lg bg-paper px-2.5 py-1.5 text-ink shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)]",
-        className,
-      )}
+      aria-label="Geneva University Commodities Club"
+      className={cn("inline-flex items-center rounded-lg", className)}
     >
-      <img src="/mark.svg" alt="" className={compact ? "size-8 outline-none" : "size-10 outline-none sm:size-11"} />
-      <span className="hidden leading-none md:block">
-        <span className="block font-display text-xs font-semibold uppercase tracking-wide sm:text-base">
-          Geneva University
-        </span>
-        <span className="mt-0.5 block font-display text-xs font-semibold uppercase tracking-wide text-copper sm:text-base">
-          Commodities Club
-        </span>
-      </span>
+      <img
+        src="/logo.png"
+        alt=""
+        className={cn("w-auto outline-none", compact ? "h-11" : "h-14 sm:h-16")}
+      />
     </Link>
   );
 }

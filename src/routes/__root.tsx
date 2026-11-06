@@ -20,6 +20,17 @@ export const Route = createRootRoute({
           "Student association at the University of Geneva. Training, market analysis, conferences and networking. Connecting Academia to Global Trade.",
       },
       { name: "theme-color", content: "#0c1c1e" },
+      { property: "og:title", content: APP_NAME },
+      {
+        property: "og:description",
+        content:
+          "Student association at the University of Geneva. Training, market analysis, conferences and networking. Connecting Academia to Global Trade.",
+      },
+      { property: "og:image", content: "https://www.gucc.ch/og.png" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.gucc.ch/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://www.gucc.ch/og.png" },
     ],
     scripts: [
       {
@@ -28,7 +39,9 @@ export const Route = createRootRoute({
       },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
