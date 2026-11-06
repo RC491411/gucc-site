@@ -36,7 +36,17 @@ export function HomePage() {
           </Reveal>
           <Reveal delay={80}>
             <aside data-tilt="10" className="glow-card rounded-xl bg-navy p-6 text-paper shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] sm:p-8">
-              <img src="/mark.png?v=4" alt="" className="drop-pulse size-12 outline-none" />
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <img src="/mark.png?v=4" alt="" className="drop-pulse size-12 shrink-0 outline-none" />
+                <span className="flex min-w-0 flex-col leading-none">
+                  <span className="font-display text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-paper sm:text-[0.72rem] sm:tracking-[0.16em]">
+                    Geneva University
+                  </span>
+                  <span className="mt-0.5 font-display text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-copper sm:mt-1 sm:text-[0.65rem] sm:tracking-[0.16em]">
+                    Commodities Club
+                  </span>
+                </span>
+              </div>
               <p className="mt-5 font-serif text-base leading-relaxed text-ice">{t.club.aside}</p>
             </aside>
           </Reveal>
