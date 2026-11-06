@@ -14,7 +14,7 @@ export function BrandMark({ className, compact = false }: { className?: string; 
       className={cn("inline-flex items-center gap-2.5 rounded-lg outline-none sm:gap-3", className)}
     >
       <img
-        src="/mark.png?v=3"
+        src="/mark.png?v=4"
         alt=""
         className={cn("shrink-0 outline-none", compact ? "size-9" : "size-11 sm:size-12")}
       />

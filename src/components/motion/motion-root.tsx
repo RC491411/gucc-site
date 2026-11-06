@@ -289,7 +289,7 @@ function RouteCurtain({ pathname }: { pathname: string }) {
       style={{ visibility: "hidden", opacity: 0 }}
     >
       <div className="absolute inset-0 bg-grid opacity-60" />
-      <img src="/mark.png?v=3" alt="" className="relative size-24 outline-none" />
+      <img src="/mark.png?v=4" alt="" className="relative size-24 outline-none" />
     </div>
   );
 }

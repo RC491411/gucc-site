@@ -78,7 +78,7 @@ export function HeaderBrand() {
         className="flex items-center gap-2.5 outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.28)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.5)] sm:gap-3"
       >
         <img
-          src="/mark.png?v=3"
+          src="/mark.png?v=4"
           alt=""
           className="size-9 shrink-0 outline-none sm:size-11"
         />
@@ -95,7 +95,7 @@ export function HeaderBrand() {
       {/* Collapsed: mark only (spins in on scroll) */}
       <img
         data-brand-mark
-        src="/mark.png?v=3"
+        src="/mark.png?v=4"
         alt=""
         className="pointer-events-none absolute size-9 outline-none drop-shadow-[0_0_14px_rgb(224_138_46_/_0.35)] transition-[filter] duration-500 group-hover/brand:drop-shadow-[0_0_20px_rgb(242_193_75_/_0.6)] sm:size-11"
       />
