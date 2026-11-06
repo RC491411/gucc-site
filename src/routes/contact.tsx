@@ -11,7 +11,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact · Geneva University Commodities Club" },
-      { name: "description", content: "Write to the Geneva University Commodities Club at gucc@unige.ch or through the contact form." },
+      { name: "description", content: "Write to the Geneva University Commodities Club at gucc.geneva@gmail.com or through the contact form." },
     ],
   }),
   component: Contact,

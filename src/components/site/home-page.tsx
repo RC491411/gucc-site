@@ -129,10 +129,10 @@ export function HomePage() {
             <p className="font-display text-xs uppercase tracking-widest text-copper">{t.join.kicker}</p>
             <SplitText text={t.join.title} className="mt-3 font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
             <a
-              href="mailto:gucc@unige.ch"
+              href="mailto:gucc.geneva@gmail.com"
               className="mt-6 inline-block font-display text-sm uppercase tracking-widest text-wheat underline-offset-4 hover:underline"
             >
-              gucc@unige.ch
+              gucc.geneva@gmail.com
             </a>
           </Reveal>
           <Reveal delay={80} className="flex items-center justify-center">

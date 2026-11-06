@@ -24,8 +24,8 @@ export function Footer() {
               </Link>
             ))}
           </nav>
-          <a href="mailto:gucc@unige.ch" className="font-mono text-xs text-ice hover:text-wheat">
-            gucc@unige.ch
+          <a href="mailto:gucc.geneva@gmail.com" className="font-mono text-xs text-ice hover:text-wheat">
+            gucc.geneva@gmail.com
           </a>
           <p className="font-mono text-xs text-steel">© 2026 {t.footer.rights}</p>
         </div>

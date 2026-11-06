@@ -295,7 +295,7 @@ export const copy = {
       indep: "Sans rattachement politique ni religieux.",
       rights: "Geneva University Commodities Club",
       contact: "Contact",
-      email: "gucc@unige.ch",
+      email: "gucc.geneva@gmail.com",
     },
     contactPage: {
       kicker: "Le desk",
@@ -316,7 +316,7 @@ export const copy = {
       sent: "Votre messagerie s'ouvre.",
       formKicker: "Formulaire",
       formTitle: "Une question, une candidature, un partenariat ?",
-      formLead: "Votre message arrive directement dans notre boîte gucc@unige.ch.",
+      formLead: "Votre message arrive directement dans notre boîte gucc.geneva@gmail.com.",
       programme: "Programme ou niveau d'études",
       programmeHint: "Par exemple Bachelor en économie, UNIGE",
       interest: "Votre demande",
@@ -330,7 +330,7 @@ export const copy = {
       successBody: "Merci. Le Comité vous répondra à l'adresse indiquée.",
       again: "Envoyer un autre message",
       errorTitle: "L'envoi n'a pas abouti.",
-      errorBody: "Réessayez dans un instant ou écrivez-nous directement à gucc@unige.ch.",
+      errorBody: "Réessayez dans un instant ou écrivez-nous directement à gucc.geneva@gmail.com.",
       fallback: "Ou écrivez directement à",
       errors: {
         required: "Champ requis",
@@ -480,7 +480,7 @@ export const copy = {
       indep: "No political or religious affiliation.",
       rights: "Geneva University Commodities Club",
       contact: "Contact",
-      email: "gucc@unige.ch",
+      email: "gucc.geneva@gmail.com",
     },
     contactPage: {
       kicker: "The desk",
@@ -501,7 +501,7 @@ export const copy = {
       sent: "Your mailbox is opening.",
       formKicker: "Form",
       formTitle: "A question, an application, a partnership?",
-      formLead: "Your message goes straight to our inbox at gucc@unige.ch.",
+      formLead: "Your message goes straight to our inbox at gucc.geneva@gmail.com.",
       programme: "Programme or level of study",
       programmeHint: "For example Bachelor in Economics, UNIGE",
       interest: "Your request",
@@ -515,7 +515,7 @@ export const copy = {
       successBody: "Thank you. The Committee will reply to the address you gave.",
       again: "Send another message",
       errorTitle: "The message could not be sent.",
-      errorBody: "Please try again in a moment or write to us directly at gucc@unige.ch.",
+      errorBody: "Please try again in a moment or write to us directly at gucc.geneva@gmail.com.",
       fallback: "Or write directly to",
       errors: {
         required: "Required",

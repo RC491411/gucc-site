@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/lib/language";
 import { cn } from "@/lib/utils";
 
-export const CONTACT_EMAIL = "gucc@unige.ch";
+export const CONTACT_EMAIL = "gucc.geneva@gmail.com";
 /** FormSubmit relays the form to the club inbox (no backend, no API key). */
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
