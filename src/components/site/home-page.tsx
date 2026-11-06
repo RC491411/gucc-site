@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Activity, ArrowDownRight, ArrowUpRight, BookOpen, Mic2, Waypoints } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { Marquee } from "@/components/motion/marquee";
+import { Activity, ArrowUpRight, BookOpen, Mic2, Waypoints } from "lucide-react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { Parallax } from "@/components/motion/parallax";
 import { SplitText } from "@/components/motion/split-text";
 import { ensureGsap, prefersReducedMotion } from "@/lib/motion";
@@ -12,11 +11,7 @@ import { SeeMore } from "@/components/pages/see-more";
 import { TeamSequence } from "@/components/team/team-sequence";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
-import { Sparkline } from "@/components/site/sparkline";
 import { useLanguage } from "@/lib/language";
-import { COMMODITIES, formatChange, formatPrice } from "@/lib/markets";
-import { useQuotes } from "@/components/site/quotes-provider";
-import { cn } from "@/lib/utils";
 
 const ICONS = {
   formation: BookOpen,
@@ -26,12 +21,7 @@ const ICONS = {
 } as const;
 
 export function HomePage() {
-  const { t, lang } = useLanguage();
-  const quotes = useQuotes();
-  const [desk, setDesk] = useState<"energy" | "metals" | "ag">("energy");
-
-
-  const board = useMemo(() => COMMODITIES.filter((c) => c.desk === desk), [desk]);
+  const { t } = useLanguage();
 
   return (
     <div>
@@ -81,8 +71,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <Marquee text="Geneva University Commodities Club" />
-
       <section id="fondateurs" className="scroll-mt-24 bg-paper text-ink">
         <div className="mx-auto max-w-6xl px-4 pb-14 pt-20 sm:px-6 lg:pt-28">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -120,78 +108,6 @@ export function HomePage() {
               <ArrowUpRight className="size-4" />
             </Link>
           </Button>
-        </div>
-      </section>
-
-      <section id="marches" className="scroll-mt-24 border-t border-copper/20 bg-ink">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-          <Reveal>
-            <p className="font-display text-xs uppercase tracking-widest text-copper">{t.markets.kicker}</p>
-            <SplitText text={t.markets.title} className="mt-3 max-w-2xl font-display text-4xl font-semibold uppercase leading-none tracking-tight sm:text-5xl" />
-            <p className="mt-5 max-w-2xl font-serif text-lg leading-relaxed text-ice/90">{t.markets.lead}</p>
-          </Reveal>
-
-          <div className="mt-8 flex flex-wrap gap-2">
-            {t.markets.desks.map((d) => (
-              <button
-                key={d.key}
-                type="button"
-                data-magnetic="0.3"
-                onClick={() => setDesk(d.key as typeof desk)}
-                className={cn(
-                  "h-11 rounded-md px-4 font-display text-sm uppercase tracking-widest transition-[background-color,color] duration-[var(--motion-quick)]",
-                  desk === d.key ? "bg-copper text-ink" : "text-ice shadow-[0_0_0_1px_rgb(224_138_46_/_0.35)] hover:text-wheat",
-                )}
-              >
-                {d.title}
-              </button>
-            ))}
-          </div>
-          <p className="mt-4 max-w-xl font-serif text-sm leading-relaxed text-steel">
-            {t.markets.desks.find((d) => d.key === desk)?.body}
-          </p>
-
-          <div key={desk} className="mt-8 grid gap-3 sm:grid-cols-3">
-            {board.map((c, i) => {
-              const q = quotes[c.symbol];
-              const up = (q?.change ?? 0) >= 0;
-              return (
-                <article
-                  key={c.symbol}
-                  data-tilt="8"
-                  style={{ animationDelay: `${i * 90}ms` }}
-                  className="board-in glow-card rounded-xl bg-navy p-5 shadow-[0_0_0_1px_rgb(224_138_46_/_0.22)]"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="font-display text-sm uppercase tracking-widest text-wheat">{c.symbol}</p>
-                      <p className="mt-1 font-serif text-sm text-ice">{lang === "fr" ? c.nameFr : c.nameEn}</p>
-                    </div>
-                    {up ? (
-                      <ArrowUpRight className="size-4 text-up" aria-hidden />
-                    ) : (
-                      <ArrowDownRight className="size-4 text-down" aria-hidden />
-                    )}
-                  </div>
-                  <p className="mt-4 font-mono text-2xl tabular-nums text-paper">
-                    {q ? formatPrice(q.price, c.decimals) : "··"}
-                    <span className="ml-2 font-display text-xs uppercase tracking-widest text-steel">{c.unit}</span>
-                  </p>
-                  <p className={cn("mt-1 font-mono text-xs tabular-nums", up ? "text-up" : "text-down")}>
-                    {q?.live ? formatChange(q.change) : "—"} · {q?.live ? t.markets.change : t.markets.reference}
-                  </p>
-                  {q ? (
-                    <div className={cn("mt-3", up ? "text-up" : "text-down")}>
-                      <Sparkline data={q.history} />
-                    </div>
-                  ) : null}
-                </article>
-              );
-            })}
-          </div>
-          <Reveal className="mt-10 flex justify-end">
-            <SeeMore to="/markets" />
-          </Reveal>
         </div>
       </section>
 
