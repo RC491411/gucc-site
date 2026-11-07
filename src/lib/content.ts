@@ -138,7 +138,7 @@ export const copy = {
       close: "Fermer",
       contact: "Contact",
     },
-    tickerNote: "Clôtures des séances précédentes uniquement. Données non vérifiées : indisponibles.",
+    tickerNote: "Dernier cours publié pour le pétrole, le gaz, l'or et l'argent. Variation sur 24 h.",
     clock: "Genève",
     hero: {
       kicker: "",
@@ -191,14 +191,14 @@ export const copy = {
     markets: {
       kicker: "Desks",
       title: "Le monde en trois carnets.",
-      lead: "Énergie, métaux, agricoles : les trois piliers du négoce que nous étudions. Seules les clôtures vérifiées des séances précédentes sont affichées.",
+      lead: "Énergie, métaux, agricoles : les trois piliers du négoce que nous étudions. Pétrole, gaz, or et argent affichent le dernier cours publié. Les autres restent des niveaux de référence.",
       desks: [
         { key: "energy", title: "Énergie", body: "Pétrole brut, produits raffinés, gaz naturel. Genève reste une place décisive du négoce pétrolier mondial." },
-        { key: "metals", title: "Métaux", body: "Or, argent, cuivre et aluminium. Clôtures vérifiées uniquement ; sinon, données indisponibles." },
-        { key: "ag", title: "Agricoles", body: "Blé, maïs, cacao. Clôtures vérifiées uniquement ; sinon, données indisponibles." },
+        { key: "metals", title: "Métaux", body: "Or et argent au dernier cours publié. Cuivre et aluminium : niveaux de référence, le temps d'un flux fiable." },
+        { key: "ag", title: "Agricoles", body: "Blé, maïs, cacao. Niveaux de référence pour lire un carnet. Pas un cours de clôture en direct." },
       ],
-      change: "par rapport à la séance antérieure",
-      reference: "Clôture précédente",
+      change: "24 h",
+      reference: "Référence",
       spread: "Spread Brent / WTI",
     },
     founders: {
@@ -324,7 +324,7 @@ export const copy = {
       close: "Close",
       contact: "Contact",
     },
-    tickerNote: "Previous-session closes only. Unverified data is unavailable.",
+    tickerNote: "Last published quote for crude, gas, gold and silver, with the 24-hour move.",
     clock: "Geneva",
     hero: {
       kicker: "",
@@ -377,14 +377,14 @@ export const copy = {
     markets: {
       kicker: "Desks",
       title: "The world in three books.",
-      lead: "Energy, metals, agriculture: the three pillars of the trade we study. Only verified previous-session closes are displayed.",
+      lead: "Energy, metals, agriculture: the three pillars of the trade we study. Crude, gas, gold and silver show the last published quote. The rest stay as reference levels.",
       desks: [
         { key: "energy", title: "Energy", body: "Crude, refined products, natural gas. Geneva remains a decisive square for global oil trade." },
-        { key: "metals", title: "Metals", body: "Gold, silver, copper and aluminium. Verified closes only; otherwise, data is unavailable." },
-        { key: "ag", title: "Agriculture", body: "Wheat, corn, cocoa. Verified closes only; otherwise, data is unavailable." },
+        { key: "metals", title: "Metals", body: "Gold and silver at the last published quote. Copper and aluminium stay as reference levels until a reliable feed is available." },
+        { key: "ag", title: "Agriculture", body: "Wheat, corn, cocoa. Reference levels to read a book. Not a live settlement price." },
       ],
-      change: "versus preceding session",
-      reference: "Previous-session close",
+      change: "24h",
+      reference: "Reference",
       spread: "Brent / WTI spread",
     },
     founders: {

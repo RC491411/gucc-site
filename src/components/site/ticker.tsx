@@ -1,19 +1,26 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useLanguage } from "@/lib/language";
-import { COMMODITIES, quoteView, type Quote } from "@/lib/markets";
+import { COMMODITIES, formatChange, formatPrice, type Quote } from "@/lib/markets";
 import { ensureGsap, prefersReducedMotion, scrollState } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 export function Ticker({ quotes }: { quotes: Record<string, Quote> }) {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const track = useRef<HTMLDivElement>(null);
 
   const items = useMemo(
     () =>
       COMMODITIES.map((c) => {
-        return { symbol: c.symbol, ...quoteView(c, quotes[c.symbol], lang), unit: quotes[c.symbol]?.unit };
+        const q = quotes[c.symbol];
+        return {
+          symbol: c.symbol,
+          unit: c.unit,
+          price: q ? formatPrice(q.price, c.decimals) : "—",
+          change: q ? formatChange(q.change) : "0.00%",
+          up: (q?.change ?? 0) >= 0,
+        };
       }),
-    [quotes, lang],
+    [quotes],
   );
 
   // Marquee driven by GSAP: speeds up with scroll velocity, slows on hover.
@@ -51,16 +58,13 @@ export function Ticker({ quotes }: { quotes: Record<string, Quote> }) {
           <span
             aria-hidden
             className={cn(
-              item.direction === 0 ? "inline-block size-1 self-center rounded-full bg-steel" : "inline-block size-0 self-center border-x-[4px] border-x-transparent",
-              item.direction > 0 ? "border-b-[6px] border-b-up" : item.direction < 0 ? "border-t-[6px] border-t-down" : "",
+              "inline-block size-0 self-center border-x-[4px] border-x-transparent",
+              item.up ? "border-b-[6px] border-b-up" : "border-t-[6px] border-t-down",
             )}
           />
           <span className="text-steel transition-colors duration-[var(--motion-quick)] group-hover/tick:text-wheat">{item.symbol}</span>
-          {item.available ? <>
-            <span className="tick-flash tabular-nums text-paper">{item.price} <span className="text-steel">{item.unit}</span></span>
-            <span className={cn("tabular-nums", item.direction > 0 ? "text-up" : item.direction < 0 ? "text-down" : "text-steel")}>{item.change}</span>
-          </> : null}
-          <span className="ticker-status text-steel">{item.status}</span>
+          <span className="tick-flash tabular-nums text-paper">{item.price}</span>
+          <span className={cn("tabular-nums", item.up ? "text-up" : "text-down")}>{item.change}</span>
         </div>
       ))}
     </div>

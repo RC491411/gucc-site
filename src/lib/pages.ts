@@ -124,10 +124,14 @@ export const marketsPage = {
     fr: "Énergie, métaux et agricoles sont les trois piliers du négoce que nous étudions. Choisissez un desk, lisez chaque matière première et voyez pourquoi Genève compte pour elle.",
   },
   dataNote: {
-    en: "Only the last completed trading session before today is eligible. No intraday prices. Unverified closes and changes remain unavailable.",
-    fr: "Seule la dernière séance achevée avant aujourd’hui est retenue. Aucun cours intrajournalier. Les clôtures et variations non vérifiées restent indisponibles.",
+    en: "Crude, gas, gold and silver show the last published quote with its 24 hour move. The others are reference levels, not a live feed.",
+    fr: "Le brut, le gaz, l'or et l'argent affichent le dernier cours publié et sa variation sur 24 h. Les autres sont des niveaux de référence, pas un flux en direct.",
   },
   whyGeneva: { en: "Why Geneva", fr: "Pourquoi Genève" },
+  prev: { en: "24 h ago", fr: "Il y a 24 h" },
+  now: { en: "Last", fr: "Dernier" },
+  referenceLevel: { en: "Reference level", fr: "Niveau de référence" },
+  live: { en: "Last published quote", fr: "Dernier cours publié" },
   desks: {
     energy: {
       lead: {
