@@ -8,26 +8,16 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/jeremy-lbrt/",
     role: { fr: "Président", en: "President" },
     bio: {
-      fr: "Président du Comité. Étudiant du Master of Science in Commodity Trading de l'UNIGE et Trading Assistant chez Sucafina, il tourne entre finance, logistique, trading et risque dans le négoce de café physique. Ancien vice-président du Geneva University Investment Club.",
-      en: "President of the Committee. MSc in Commodity Trading student at UNIGE and Trading Assistant at Sucafina, he rotates across finance, logistics, trading and risk in the physical coffee trade. Former Vice-President of the Geneva University Investment Club.",
+      fr: "Fondateur et président. Ancien vice-président du Geneva University Investment Club, il est Trading Assistant chez Sucafina et a auparavant été courtier en biogaz chez SunCo. Il pilote la stratégie du club et développe ses relations avec l’écosystème genevois du négoce.",
+      en: "Founder and President. Former Vice-President of the Geneva University Investment Club, he is a Trading Assistant at Sucafina and previously brokered biogas at SunCo. He leads the club’s strategy and builds relationships with Geneva’s trading ecosystem.",
     },
     facts: {
       fr: ["Négoce de café", "MSc Commodity Trading", "Négoce physique", "A lancé un desk biogaz"],
       en: ["Coffee trading", "MSc Commodity Trading", "Physical trading", "Launched a biogas desk"],
     },
     long: {
-      fr: [
-        "Jérémy préside le Comité. Il représente l'association vis-à-vis des tiers, convoque l'Assemblée générale et pilote la stratégie du club au sein de l'Université de Genève.",
-        "Titulaire d'un Bachelor en économie de l'Université de Genève (2022 à 2025), il a commencé en septembre 2026 le Master of Science in Commodity Trading de l'UNIGE. En parallèle, il a rejoint Sucafina à Genève comme Trading Assistant : il tourne entre les départements Finance, Logistique, Trading et Risque pour apprendre le côté physique du négoce de café, dans l'esprit du modèle « Farm to Roaster » du groupe.",
-        "Avant le GUCC, il a passé deux ans au Geneva University Investment Club. Membre du département Commodities, puis responsable du département Technologie, il y a dirigé une équipe de dix personnes en modélisation financière et thèses d'investissement (une thèse acheteuse sur Broadcom a atteint son objectif de 34 % en un mois). Il en a été vice-président de décembre 2024 à août 2025 et dirige aujourd'hui son réseau d'alumni.",
-        "En mars 2025, il a co-organisé avec le GUIC une conférence en partenariat avec Vontobel et Bilan sur la manière dont la technologie démocratise l'investissement chez les jeunes. Elle a réuni 150 participants.",
-      ],
-      en: [
-        "Jérémy chairs the Committee. He represents the association towards third parties, convenes the General Assembly and steers the club's strategy at the University of Geneva.",
-        "He holds a Bachelor in Economics from the University of Geneva (2022 to 2025) and started UNIGE's Master of Science in Commodity Trading in September 2026. In parallel he joined Sucafina in Geneva as a Trading Assistant, rotating across the Finance, Logistics, Trading and Risk departments to learn the physical side of the coffee trade from the ground up, in the spirit of the group's Farm to Roaster model.",
-        "Before GUCC he spent two years at the Geneva University Investment Club. First a member of the Commodity department, then Head of the Technology department, he led a team of ten on financial modelling and investment theses (a buy side thesis on Broadcom hit its 34% take profit within a month). He was Vice-President from December 2024 to August 2025 and now leads its Alumni Network.",
-        "In March 2025 he co-organised, with the GUIC, a conference in partnership with Vontobel and Bilan on how technology is democratising investment for young people. It welcomed 150 participants.",
-      ],
+      fr: ["Fondateur et président. Ancien vice-président du Geneva University Investment Club, il a rejoint Sucafina, une société de négoce de café basée à Genève, en tant que Trading Assistant. Il a auparavant travaillé comme courtier en biogaz chez SunCo. Il pilote la stratégie du club et ses relations avec l’écosystème genevois du négoce."],
+      en: ["Founder and President. Former Vice-President of the Geneva University Investment Club, he joined Sucafina, a Geneva-based coffee trading company, as a Trading Assistant. He previously worked as a broker in biogas at SunCo. He leads the club’s strategy and its relationships with Geneva’s trading ecosystem."],
     },
   },
   {
@@ -95,26 +85,16 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/mamadou-bah-82247929b/",
     role: { fr: "Co-fondateur", en: "Co-founder" },
     bio: {
-      fr: "Co-fondateur. Étudiant en MSc Finance à HEC Lausanne et candidat au certificat d'opérateur SUISSENÉGOCE. Il a géré la logistique de carburants alternatifs chez BFC Biofuel Consulting et effectué un stage à la Banque Cantonale Vaudoise.",
-      en: "Co-founder. MSc in Finance student at HEC Lausanne working towards the SUISSENÉGOCE Operator's Certificate. He has handled alternative fuel logistics at BFC Biofuel Consulting and interned at Banque Cantonale Vaudoise.",
+      fr: "Co-fondateur. Diplômé de l’Université de Genève, il poursuit un master en finance à HEC Lausanne et le certificat d’opérateur de SUISSENÉGOCE. Il rapproche les étudiants de l’écosystème genevois des matières premières. D’origine guinéenne, il s’intéresse aux métaux, aux mines et au rôle des ressources naturelles dans le développement de l’Afrique de l’Ouest.",
+      en: "Co-founder. A University of Geneva graduate pursuing a Master’s in Finance at HEC Lausanne and SUISSENÉGOCE’s Operator Certificate, he connects students with Geneva’s commodity ecosystem. Of Guinean origin, he is interested in metals, mining and the role of natural resources in West Africa’s development.",
     },
     facts: {
       fr: ["Certificat d’opérateur, SUISSENEGOSSE", "Soutien au développement en Afrique de l’Ouest", "Métaux et biocarburants", "MSc en finance, HEC Lausanne"],
       en: ["Operator’s certificate, SUISSENEGOSSE", "Support development in West africa", "Metals and Biofuels", "MSc of Finance, HEC Lausanne"],
     },
     long: {
-      fr: [
-        "Mamadou est co-fondateur du club. Il apporte au Comité une vision physique et opérationnelle des matières premières.",
-        "Diplômé d'un Bachelor en économie de la Geneva School of Economics and Management (UNIGE, 2022 à 2025), il poursuit un MSc en finance à HEC Lausanne et prépare le certificat d'opérateur de la SUISSENÉGOCE Academy, l'association suisse du négoce et de l'affrètement.",
-        "Chez BFC Biofuel Consulting, fin 2025, il a travaillé sur la chaîne de production d'UCOME, un biodiesel issu d'huile de cuisson recyclée, de la collecte à la purification. Il a soutenu la commercialisation de carburants alternatifs auprès de clients du transport routier et lourd, et coordonné des livraisons dans toute la Suisse par camion-citerne et conteneur ISO, en lien avec des majors pétrolières et des distributeurs privés.",
-        "Auparavant, lors d'un stage d'été à la Banque Cantonale Vaudoise à Lausanne (2025), il a construit des benchmarks sectoriels comparatifs pour appuyer les décisions d'investissement. Au Geneva University Investment Club, il est passé de membre à responsable du département Goods & Services, puis Head of Corporate Relations, chargé des partenariats avec les entreprises. Il travaille en français et en anglais.",
-      ],
-      en: [
-        "Mamadou is a co-founder of the club. He brings a physical, operational view of commodities to the Committee.",
-        "He graduated with a Bachelor in Economics from the Geneva School of Economics and Management (UNIGE, 2022 to 2025) and is now pursuing an MSc in Finance at HEC Lausanne, alongside the Operator's Certificate of the SUISSENÉGOCE Academy, the Swiss trading and shipping association.",
-        "At BFC Biofuel Consulting in late 2025 he worked on the production pipeline of UCOME, a biodiesel made from recycled cooking oil, from collection to purification. He supported the commercialisation of alternative fuels for automotive and heavy transport clients and coordinated deliveries across Switzerland by tanker truck and ISO container, working with oil majors and private distributors.",
-        "Earlier, during a summer internship at Banque Cantonale Vaudoise in Lausanne (2025), he built comparative sector benchmarks to support investment and strategic decisions. At the Geneva University Investment Club he went from member to Head of the Goods & Services department, then Head of Corporate Relations, in charge of partnerships with companies. He works in French and English.",
-      ],
+      fr: ["Diplômé de l’Université de Genève, Mamadou poursuit un master en finance à HEC Lausanne et le certificat d’opérateur de SUISSENÉGOCE. En tant que co-fondateur, il contribue à rapprocher les étudiants de l’écosystème genevois des matières premières. D’origine guinéenne, il s’intéresse particulièrement aux métaux et au secteur minier, ainsi qu’à la manière dont les ressources naturelles peuvent soutenir le développement de l’Afrique de l’Ouest."],
+      en: ["A University of Geneva graduate, Mamadou is pursuing a Master’s in Finance at HEC Lausanne and SUISSENÉGOCE’s Operator Certificate. As a co-founder, he helps bring students closer to Geneva’s commodity ecosystem. Of Guinean origin, he is particularly interested in metals and mining, and in how natural resources can support development in West Africa."],
     },
   },
 ] as const;
