@@ -99,8 +99,8 @@ export const founders = [
       en: "Co-founder. MSc in Finance student at HEC Lausanne working towards the SUISSENÉGOCE Operator's Certificate. He has handled alternative fuel logistics at BFC Biofuel Consulting and interned at Banque Cantonale Vaudoise.",
     },
     facts: {
-      fr: ["Certificat d’opérateur", "Soutien au développement en Afrique de l’Ouest", "Métaux et biocarburants", "MSc en finance, HEC Lausanne"],
-      en: ["Operator’s certificate", "Support development in West africa", "Metals and Biofuels", "MSc of Finance in HEC Lausanne"],
+      fr: ["Certificat d’opérateur, SUISSENEGOSSE", "Soutien au développement en Afrique de l’Ouest", "Métaux et biocarburants", "MSc en finance, HEC Lausanne"],
+      en: ["Operator’s certificate, SUISSENEGOSSE", "Support development in West africa", "Metals and Biofuels", "MSc of Finance, HEC Lausanne"],
     },
     long: {
       fr: [
