@@ -13,3 +13,31 @@ Assets in `public/` (logo `mark.svg`, `logo.png` original raster, `hero/*.jpg`, 
 
 `.grok-original/` keeps Grok's sandbox-only `vite.config.ts`, `package.json` and `scripts/` (PWA, auth popup, PGlite, preview bridge) for reference; they are not used here.
 Removed vs. Grok sandbox: PreviewHostBridge, `/__grok` manifest/icon links, nitro/vercel build preset, unused deps.
+
+## Contact form
+
+The EN/FR contact form uses Web3Forms and the verified recipient
+`gucc.geneva@gmail.com`. `src/lib/contact-submit.ts` contains the **public embed
+access key**, not a private account token. Never put account/session credentials
+in this file. The visitor's `email` is Web3Forms' default Reply-To; programme,
+request and language remain custom fields.
+
+Each attempt makes exactly one JSON POST, with a 15-second deadline (including
+reading the response). Only a 2xx response with boolean `success: true` clears the
+form. Network errors, non-JSON responses, timeouts and gateway errors retain the
+fields and explain that delivery is unknown; no automatic retry occurs. A local
+honeypot discards bot attempts before any request.
+
+Official integration references:
+- https://docs.web3forms.com/how-to-guides/js-frameworks/react-js/react-js
+- https://docs.web3forms.com/getting-started/customizations/custom-reply-to
+
+Offline/mocked regression checks (no email sent):
+- `npm run typecheck`
+- `npm run test:contact` (Node 22.6+)
+- `npm run build`
+- `npx playwright install chromium`, then `npm run preview` in one terminal and
+  `npm run test:contact:ui` in another. Every browser POST is intercepted locally.
+
+These checks do not prove inbox receipt. A real end-to-end submission and mailbox
+check must be explicitly approved before sending a test message.

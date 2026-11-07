@@ -10,70 +10,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/lib/language";
 import { cn } from "@/lib/utils";
+import { submitContact, type ContactResult } from "@/lib/contact-submit";
 
 export const CONTACT_EMAIL = "gucc.geneva@gmail.com";
-/** FormSubmit relays the form to the club inbox (no backend, no API key). */
-const FORM_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
 
 const INTERESTS = ["join", "question", "partnership", "other"] as const;
 type Interest = (typeof INTERESTS)[number];
-type State = "idle" | "sending" | "success" | "activation" | "error";
+type State = "idle" | "sending" | "success" | "error";
 
 function mailTo() {
   return `mailto:${CONTACT_EMAIL}`;
 }
 
-
-type FormSubmitResult = {
-  ok: boolean;
-  needsActivation: boolean;
-  message: string;
-};
-
-async function postFormSubmit(payload: Record<string, string>): Promise<FormSubmitResult> {
-  const parse = async (res: Response): Promise<FormSubmitResult> => {
-    const raw = await res.text();
-    let data: { success?: string | boolean; message?: string } = {};
-    try {
-      data = JSON.parse(raw) as typeof data;
-    } catch {
-      /* Cloudflare / HTML error pages are not JSON */
-    }
-    const message = String(data.message ?? raw ?? "");
-    const needsActivation = /activat|confirm your email|confirmation link|needs activation/i.test(message);
-    const success =
-      data.success === true ||
-      data.success === "true" ||
-      (/^\s*ok\s*$/i.test(message) && res.ok);
-    // Activation replies are often success:"false" with an activation message.
-    if (needsActivation) return { ok: false, needsActivation: true, message };
-    return { ok: Boolean(res.ok && success), needsActivation: false, message };
-  };
-
-  // Documented AJAX path: JSON body + Accept application/json.
-  let res = await fetch(FORM_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-
-  // Origin outages (Cloudflare 5xx) or empty bodies: retry once as urlencoded.
-  if (res.status >= 500 || res.status === 408 || res.status === 429) {
-    res = await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-      },
-      body: new URLSearchParams(payload),
-    });
-  }
-
-  return parse(res);
-}
 
 export function ContactPage() {
   const { t, lang } = useLanguage();
@@ -87,6 +35,8 @@ export function ContactPage() {
   const [honey, setHoney] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [state, setState] = useState<State>("idle");
+  const sending = useRef(false);
+  const [failure, setFailure] = useState<ContactResult>("unknown");
   const formCard = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -112,7 +62,9 @@ export function ContactPage() {
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
-    if (state === "sending") return;
+    if (sending.current) return;
+    // Silently discard the honeypot without sending or clearing any fields.
+    if (honey) return;
     const schema = z.object({
       name: z.string().trim().min(1, c.errors.required),
       from: z.string().trim().email(c.errors.email),
@@ -129,41 +81,35 @@ export function ContactPage() {
       return;
     }
     setErrors({});
+    sending.current = true;
     setState("sending");
 
-    // Bots fill the hidden field: pretend it worked and send nothing.
-    if (honey) {
-      setState("success");
-      return;
-    }
-
-    const payload: Record<string, string> = {
+    const payload = {
       name: parsed.data.name,
       email: parsed.data.from,
       programme: programme.trim() || "(not given)",
       request: t.contactPage.interests[interest],
       message: parsed.data.message,
       language: lang.toUpperCase(),
-      _subject: "New message from gucc website",
-      _template: "table",
-      _captcha: "false",
-      _replyto: parsed.data.from,
     };
 
     try {
-      const result = await postFormSubmit(payload);
-      if (result.needsActivation) {
-        setState("activation");
+      const result = await submitContact(payload);
+      if (result !== "success") {
+        setFailure(result);
+        setState("error");
         return;
       }
-      if (!result.ok) throw new Error(result.message || "send failed");
       setState("success");
       setName("");
       setFrom("");
       setProgramme("");
       setMessage("");
     } catch {
+      setFailure("unknown");
       setState("error");
+    } finally {
+      sending.current = false;
     }
   }
 
@@ -254,12 +200,13 @@ export function ContactPage() {
                     <div className="grid gap-4 sm:grid-cols-2">
                       <label className="block">
                         <span className={labelCls}>{c.name}</span>
-                        <Input value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" className="bg-navy/10 text-ink" />
+                        <Input disabled={state === "sending"} value={name} onChange={(e) => setName(e.target.value)} autoComplete="name" className="bg-navy/10 text-ink" />
                         {errors.name ? <p className={errCls}>{errors.name}</p> : null}
                       </label>
                       <label className="block">
                         <span className={labelCls}>{c.emailField}</span>
                         <Input
+                          disabled={state === "sending"}
                           type="email"
                           value={from}
                           onChange={(e) => setFrom(e.target.value)}
@@ -272,6 +219,7 @@ export function ContactPage() {
                     <label className="block">
                       <span className={labelCls}>{c.programme}</span>
                       <Input
+                        disabled={state === "sending"}
                         value={programme}
                         onChange={(e) => setProgramme(e.target.value)}
                         placeholder={c.programmeHint}
@@ -284,6 +232,7 @@ export function ContactPage() {
                         {INTERESTS.map((key) => (
                           <button
                             key={key}
+                            disabled={state === "sending"}
                             type="button"
                             data-magnetic="0.2"
                             aria-pressed={interest === key}
@@ -303,6 +252,7 @@ export function ContactPage() {
                     <label className="block">
                       <span className={labelCls}>{c.message}</span>
                       <Textarea
+                        disabled={state === "sending"}
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         rows={6}
@@ -313,7 +263,7 @@ export function ContactPage() {
                     {/* Honeypot for spam bots: hidden from people and assistive tech. */}
                     <input
                       type="text"
-                      name="_honey"
+                      name="botcheck"
                       tabIndex={-1}
                       autoComplete="off"
                       value={honey}
@@ -321,22 +271,13 @@ export function ContactPage() {
                       aria-hidden
                       className="absolute -left-[9999px] size-px opacity-0"
                     />
-                    {state === "activation" ? (
-                      <div role="status" className="flex gap-3 rounded-md bg-copper/15 p-4 text-ink shadow-[0_0_0_1px_rgb(224_138_46_/_0.55)]">
-                        <Mail className="mt-0.5 size-5 shrink-0 text-copper" />
-                        <div>
-                          <p className="font-display text-sm uppercase tracking-wider">{c.activationTitle}</p>
-                          <p className="mt-1 font-serif text-sm text-navy/80">{c.activationBody}</p>
-                        </div>
-                      </div>
-                    ) : null}
                     {state === "error" ? (
                       <div role="alert" className="form-error flex gap-3 rounded-md bg-down/10 p-4 text-ink shadow-[0_0_0_1px_rgb(224_90_72_/_0.5)]">
                         <AlertTriangle className="mt-0.5 size-5 shrink-0 text-down" />
                         <div>
                           <p className="font-display text-sm uppercase tracking-wider">{c.errorTitle}</p>
                           <p className="mt-1 font-serif text-sm text-navy/80">
-                            {c.errorBody}{" "}
+                            {failure === "rejected" ? c.errorBody : c.unknownBody}{" "}
                             <a href={mailTo()} className="underline underline-offset-2">
                               {CONTACT_EMAIL}
                             </a>

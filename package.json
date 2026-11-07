@@ -8,6 +8,8 @@
     "build:static": "npm run build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "test:contact": "node --experimental-strip-types --test tests/contact-submit.test.ts",
+    "test:contact:ui": "node tests/contact-form.mjs",
     "format": "prettier --write src"
   },
   "dependencies": {
