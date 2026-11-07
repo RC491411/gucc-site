@@ -56,26 +56,16 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/rafael-calado-bb5a5b293",
     role: { fr: "Co-fondateur", en: "Co-founder" },
     bio: {
-      fr: "Co-fondateur. Ancien président du Geneva University Investment Club, où il a préparé le partenariat avec Vontobel, il a ensuite rejoint Taranis entre opérations de fonds et analyse fondamentale. Il façonne le programme académique du club.",
-      en: "Co-founder. Former President of the Geneva University Investment Club, where he prepared its partnership with Vontobel, he then joined Taranis across fund operations and fundamental analysis. He shapes the club's academic programme.",
+      fr: "Co-fondateur. Diplômé de l’Université de Genève et étudiant en master en finance à HEC Lausanne, Rafael est analyste chez Taranis, un hedge fund basé à Genève. Ancien président du Geneva University Investment Club, il apporte son expérience des opérations de fonds et de l’analyse fondamentale.",
+      en: "Co-founder. A University of Geneva graduate pursuing a Master’s in Finance at HEC Lausanne, Rafael is an Analyst at Taranis, a Geneva-based hedge fund. Former President of the Geneva University Investment Club, he brings experience in fund operations and fundamental analysis.",
     },
     facts: {
       fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Partenariat et conférence IA avec Vontobel"],
       en: ["Analyst at Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Former President, GUIC", "Vontobel partnership and AI conference"],
     },
     long: {
-      fr: [
-        "Rafael est co-fondateur du club. Il contribue à bâtir son programme académique : ateliers, cas pratiques et simulations de marchés.",
-        "Il a présidé le Geneva University Investment Club jusqu'au début de 2025. Il a rendu visite à Vontobel Genève pour finaliser le partenariat entre la banque et le GUIC, et a accueilli en décembre 2024 à Uni Mail une conférence publique avec des experts de Vontobel sur la manière dont l'intelligence artificielle transforme les choix d'investissement.",
-        "Il a ensuite rejoint Taranis, où il a travaillé dans plusieurs départements jusqu'en décembre 2025 : soutien opérationnel à la gestion du fonds et analyse fondamentale approfondie, avec le suivi de la stratégie d'investissement et des principaux développements de marché et d'entreprises.",
-        "Il est certifié Bloomberg Market Concepts (2026), titulaire de certificats Financial Edge en modélisation financière sur Excel et en comparables boursiers (2024), et a suivi le Finance Accelerator d'AmplifyME.",
-      ],
-      en: [
-        "Rafael is a co-founder of the club. He helps shape its academic programme: workshops, case work and market simulations.",
-        "He led the Geneva University Investment Club as President until early 2025. He visited Vontobel Geneva to put the finishing touches on the partnership between the bank and the GUIC, and in December 2024 hosted a public conference at Uni Mail with Vontobel experts on how artificial intelligence is transforming investment choices.",
-        "He then joined Taranis, where he worked across several departments until December 2025, contributing to operational support for the fund and to in-depth fundamental analysis, tracking the investment strategy and key market and company developments.",
-        "He holds the Bloomberg Market Concepts certification (2026), Financial Edge certificates in Excel financial modelling and trading comparables (2024), and completed the AmplifyME Finance Accelerator.",
-      ],
+      fr: ["Co-fondateur. Diplômé de l’Université de Genève, Rafael poursuit un master en finance à HEC Lausanne et travaille comme analyste chez Taranis, un hedge fund basé à Genève. En tant que président du Geneva University Investment Club, il a noué plusieurs partenariats, notamment avec Vontobel, renforçant les liens du club avec la communauté financière genevoise. Son expérience couvre les opérations de fonds et l’analyse fondamentale, apportant une perspective financière sur les marchés des matières premières, où les décisions d’investissement se conjuguent avec le négoce physique et les évolutions économiques mondiales."],
+      en: ["Co-founder. A University of Geneva graduate, Rafael is pursuing a Master’s in Finance at HEC Lausanne and works as an Analyst at Taranis, a hedge fund based in Geneva. As President of the Geneva University Investment Club, he secured several partnerships, including with Vontobel, strengthening the club’s ties with Geneva’s financial community. His experience spans fund operations and fundamental analysis, providing a financial perspective on commodity markets, where investment decisions intersect with physical trade and global economic developments."],
     },
   },
   {
