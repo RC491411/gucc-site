@@ -12,8 +12,8 @@ export const founders = [
       en: "President of the Committee. MSc in Commodity Trading student at UNIGE and Trading Assistant at Sucafina, he rotates across finance, logistics, trading and risk in the physical coffee trade. Former Vice-President of the Geneva University Investment Club.",
     },
     facts: {
-      fr: ["MSc Commodity Trading, UNIGE", "Trading Assistant, Sucafina", "Ancien vice-président du GUIC", "Conférence Vontobel et Bilan, 150 participants"],
-      en: ["MSc Commodity Trading, UNIGE", "Trading Assistant, Sucafina", "Former Vice-President, GUIC", "Vontobel and Bilan conference, 150 guests"],
+      fr: ["Négoce de café", "MSc Commodity Trading", "Négoce physique", "A lancé un desk biogaz"],
+      en: ["Coffee trading", "MSc Commodity Trading", "Physical trading", "Launched a biogas desk"],
     },
     long: {
       fr: [
@@ -99,8 +99,8 @@ export const founders = [
       en: "Co-founder. MSc in Finance student at HEC Lausanne working towards the SUISSENÉGOCE Operator's Certificate. He has handled alternative fuel logistics at BFC Biofuel Consulting and interned at Banque Cantonale Vaudoise.",
     },
     facts: {
-      fr: ["MSc Finance, HEC Lausanne", "Certificat d'opérateur SUISSENÉGOCE", "Biocarburants, BFC Biofuel Consulting", "Ancien Head of Corporate Relations, GUIC"],
-      en: ["MSc Finance, HEC Lausanne", "SUISSENÉGOCE Operator's Certificate", "Biofuels, BFC Biofuel Consulting", "Former Head of Corporate Relations, GUIC"],
+      fr: ["Certificat d’opérateur", "Soutien au développement en Afrique de l’Ouest", "Métaux et biocarburants", "MSc en finance, HEC Lausanne"],
+      en: ["Operator’s certificate", "Support development in West africa", "Metals and Biofuels", "MSc of Finance in HEC Lausanne"],
     },
     long: {
       fr: [
