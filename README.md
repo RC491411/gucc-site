@@ -41,3 +41,15 @@ Offline/mocked regression checks (no email sent):
 
 These checks do not prove inbox receipt. A real end-to-end submission and mailbox
 check must be explicitly approved before sending a test message.
+
+## Market data
+
+Only verified **previous completed trading-session closes** are eligible. Currently
+no closing-price source/instrument is approved: all ten commodities show unavailable,
+not static reference prices, intraday quotes or invented zero changes. No visible
+date labels are added. See [the close policy/source audit](docs/market-close-policy.md)
+for coverage, validation, units, calendars and refresh limitations.
+
+`npm run test:markets` runs offline data-policy tests. After `npm run build`, run
+`npm run test:markets:ui` for mocked EN/FR desktop/mobile renderer checks (Chromium
+required). No real contact-form messages are sent by either command.
