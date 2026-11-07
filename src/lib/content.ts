@@ -56,8 +56,8 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/rafael-calado-bb5a5b293",
     role: { fr: "Co-fondateur", en: "Co-founder" },
     bio: {
-      fr: "Co-fondateur. Diplômé de l’Université de Genève et étudiant en master en finance à HEC Lausanne, Rafael est analyste chez Taranis, un hedge fund basé à Genève. Ancien président du Geneva University Investment Club, il apporte son expérience des opérations de fonds et de l’analyse fondamentale.",
-      en: "Co-founder. A University of Geneva graduate pursuing a Master’s in Finance at HEC Lausanne, Rafael is an Analyst at Taranis, a Geneva-based hedge fund. Former President of the Geneva University Investment Club, he brings experience in fund operations and fundamental analysis.",
+      fr: "Co-fondateur. Titulaire d’un diplôme de l’Université de Genève, Rafael suit aujourd’hui un master en finance à HEC Lausanne en parallèle de son activité d’analyste chez Taranis, un hedge fund basé à Genève. Ancien président du Geneva University Investment Club, il apporte son expérience des opérations de fonds et de l’analyse fondamentale.",
+      en: "Co-founder. With a degree from the University of Geneva, Rafael is now studying for a Master’s in Finance at HEC Lausanne alongside his role as an Analyst at Taranis, a Geneva-based hedge fund. Former President of the Geneva University Investment Club, he brings experience in fund operations and fundamental analysis.",
     },
     facts: {
       fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Partenariat et conférence IA avec Vontobel"],
