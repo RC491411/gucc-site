@@ -60,8 +60,8 @@ export const founders = [
       en: "Co-founder. With a degree from the University of Geneva, Rafael is now studying for a Master’s in Finance at HEC Lausanne alongside his role as an Analyst at Taranis, a Geneva-based hedge fund. Former President of the Geneva University Investment Club, he brings experience in fund operations and fundamental analysis.",
     },
     facts: {
-      fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Partenariat et conférence IA avec Vontobel"],
-      en: ["Analyst at Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Former President, GUIC", "Vontobel partnership and AI conference"],
+      fr: ["Analyste chez Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Ancien président du GUIC", "Analyse stratégique"],
+      en: ["Analyst at Taranis - Hedge Fund", "MSc Finance, HEC Lausanne", "Former President, GUIC", "Strategic Analysis"],
     },
     long: {
       fr: ["Co-fondateur. Diplômé de l’Université de Genève, Rafael poursuit un master en finance à HEC Lausanne et travaille comme analyste chez Taranis, un hedge fund basé à Genève. En tant que président du Geneva University Investment Club, il a noué plusieurs partenariats, notamment avec Vontobel, renforçant les liens du club avec la communauté financière genevoise. Son expérience couvre les opérations de fonds et l’analyse fondamentale, apportant une perspective financière sur les marchés des matières premières, où les décisions d’investissement se conjuguent avec le négoce physique et les évolutions économiques mondiales."],
