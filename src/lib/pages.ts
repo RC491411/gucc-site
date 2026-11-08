@@ -124,8 +124,8 @@ export const marketsPage = {
     fr: "Énergie, métaux et agricoles sont les trois piliers du négoce que nous étudions. Choisissez un desk, lisez chaque matière première et voyez pourquoi Genève compte pour elle.",
   },
   dataNote: {
-    en: "Crude, gas, gold and silver show the last published quote with its 24 hour move. The others are reference levels, not a live feed.",
-    fr: "Le brut, le gaz, l'or et l'argent affichent le dernier cours publié et sa variation sur 24 h. Les autres sont des niveaux de référence, pas un flux en direct.",
+    en: "Crude, gas, gold and silver show the last published quote with its 24 hour move. Copper, aluminium, wheat, corn and cocoa use official TradingView widgets for Capital.com CFDs: latest available quotes, potentially delayed, in the provider’s native quotation.",
+    fr: "Le brut, le gaz, l'or et l'argent affichent le dernier cours publié et sa variation sur 24 h. Le cuivre, l’aluminium, le blé, le maïs et le cacao utilisent les widgets officiels TradingView pour les CFD de Capital.com : dernières cotations disponibles, délai possible, dans la cotation native du fournisseur.",
   },
   whyGeneva: { en: "Why Geneva", fr: "Pourquoi Genève" },
   prev: { en: "24 h ago", fr: "Il y a 24 h" },

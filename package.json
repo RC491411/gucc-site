@@ -10,7 +10,9 @@
     "typecheck": "tsc --noEmit",
     "test:contact": "node --experimental-strip-types --test tests/contact-submit.test.ts",
     "test:contact:ui": "node tests/contact-form.mjs",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "test:markets": "node --experimental-strip-types --test tests/tradingview.test.ts",
+    "test:markets:ui": "node tests/tradingview-ui.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

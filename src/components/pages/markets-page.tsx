@@ -1,5 +1,7 @@
 import { ArrowDownRight, ArrowUpRight, MapPin, Minus } from "lucide-react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { TradingViewCommodityCard } from "@/components/markets/tradingview-widget";
+import { isTradingViewCommodity } from "@/lib/tradingview";
 import { SplitText } from "@/components/motion/split-text";
 import { PageHero } from "@/components/pages/page-hero";
 import { useQuotes } from "@/components/site/quotes-provider";
@@ -230,7 +232,9 @@ function MarketsDesk() {
         <div
           className={cn("mt-14 grid gap-4 md:grid-cols-2", board.length === 3 && "lg:grid-cols-3")}
         >
-          {board.map((c, i) => (
+          {board.map((c, i) => isTradingViewCommodity(c.symbol) ? (
+            <TradingViewCommodityCard key={c.symbol} commodity={c.symbol} delay={200 + i * 110} />
+          ) : (
             <CommodityCard key={c.symbol} c={c} q={quotes[c.symbol]} delay={200 + i * 110} />
           ))}
         </div>

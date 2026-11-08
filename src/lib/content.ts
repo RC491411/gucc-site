@@ -191,11 +191,11 @@ export const copy = {
     markets: {
       kicker: "Desks",
       title: "Le monde en trois carnets.",
-      lead: "Énergie, métaux, agricoles : les trois piliers du négoce que nous étudions. Pétrole, gaz, or et argent affichent le dernier cours publié. Les autres restent des niveaux de référence.",
+      lead: "Énergie, métaux, agricoles : les trois piliers du négoce que nous étudions. Pétrole, gaz, or et argent affichent le dernier cours publié. Cuivre, aluminium, blé, maïs et cacao : CFD Capital.com dans les widgets TradingView, dernières cotations disponibles avec délai possible.",
       desks: [
         { key: "energy", title: "Énergie", body: "Pétrole brut, produits raffinés, gaz naturel. Genève reste une place décisive du négoce pétrolier mondial." },
-        { key: "metals", title: "Métaux", body: "Or et argent au dernier cours publié. Cuivre et aluminium : niveaux de référence, le temps d'un flux fiable." },
-        { key: "ag", title: "Agricoles", body: "Blé, maïs, cacao. Niveaux de référence pour lire un carnet. Pas un cours de clôture en direct." },
+        { key: "metals", title: "Métaux", body: "Or et argent au dernier cours publié. Cuivre et aluminium : CFD Capital.com affichés par TradingView, délai possible." },
+        { key: "ag", title: "Agricoles", body: "Blé, maïs, cacao : CFD Capital.com affichés par TradingView. Dernières cotations disponibles, délai possible." },
       ],
       change: "24 h",
       reference: "Référence",
@@ -377,11 +377,11 @@ export const copy = {
     markets: {
       kicker: "Desks",
       title: "The world in three books.",
-      lead: "Energy, metals, agriculture: the three pillars of the trade we study. Crude, gas, gold and silver show the last published quote. The rest stay as reference levels.",
+      lead: "Energy, metals, agriculture: the three pillars of the trade we study. Crude, gas, gold and silver show the last published quote. Copper, aluminium, wheat, corn and cocoa: Capital.com CFDs in TradingView widgets, showing the latest available quotes with a possible delay.",
       desks: [
         { key: "energy", title: "Energy", body: "Crude, refined products, natural gas. Geneva remains a decisive square for global oil trade." },
-        { key: "metals", title: "Metals", body: "Gold and silver at the last published quote. Copper and aluminium stay as reference levels until a reliable feed is available." },
-        { key: "ag", title: "Agriculture", body: "Wheat, corn, cocoa. Reference levels to read a book. Not a live settlement price." },
+        { key: "metals", title: "Metals", body: "Gold and silver at the last published quote. Copper and aluminium: Capital.com CFDs displayed by TradingView, potentially delayed." },
+        { key: "ag", title: "Agriculture", body: "Wheat, corn, cocoa: Capital.com CFDs displayed by TradingView. Latest available quotes, potentially delayed." },
       ],
       change: "24h",
       reference: "Reference",

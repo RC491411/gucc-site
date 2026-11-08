@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
+import { TradingViewTargetsTicker } from "@/components/markets/tradingview-widget";
 import { useLanguage } from "@/lib/language";
 import { COMMODITIES, formatChange, formatPrice, type Quote } from "@/lib/markets";
 import { ensureGsap, prefersReducedMotion, scrollState } from "@/lib/motion";
@@ -10,7 +11,7 @@ export function Ticker({ quotes }: { quotes: Record<string, Quote> }) {
 
   const items = useMemo(
     () =>
-      COMMODITIES.map((c) => {
+      COMMODITIES.filter((c) => c.liveCode).map((c) => {
         const q = quotes[c.symbol];
         return {
           symbol: c.symbol,
@@ -71,6 +72,7 @@ export function Ticker({ quotes }: { quotes: Record<string, Quote> }) {
   );
 
   return (
+    <>
     <div className="relative border-b border-paper/10 bg-ink">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-ink to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-ink to-transparent" />
@@ -82,5 +84,7 @@ export function Ticker({ quotes }: { quotes: Record<string, Quote> }) {
       </div>
       <p className="sr-only">{t.tickerNote}</p>
     </div>
+    <TradingViewTargetsTicker />
+    </>
   );
 }
