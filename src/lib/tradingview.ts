@@ -15,7 +15,7 @@ export const TRADINGVIEW_INSTRUMENTS = {
 
 export type TradingViewCommodity = keyof typeof TRADINGVIEW_INSTRUMENTS;
 export type WidgetLanguage = "en" | "fr";
-export type WidgetKind = "symbol-overview" | "ticker-tape";
+export type WidgetKind = "symbol-overview";
 
 export function isTradingViewCommodity(symbol: string): symbol is TradingViewCommodity {
   return Object.prototype.hasOwnProperty.call(TRADINGVIEW_INSTRUMENTS, symbol);
@@ -52,34 +52,18 @@ export function overviewConfig(commodity: TradingViewCommodity, lang: WidgetLang
   };
 }
 
-export function tickerConfig(lang: WidgetLanguage) {
-  return {
-    symbols: Object.values(TRADINGVIEW_INSTRUMENTS).map((instrument) => ({
-      proName: instrument.symbol,
-      description: `${lang === "fr" ? instrument.nameFr : instrument.nameEn} · CFD`,
-    })),
-    showSymbolLogo: true,
-    colorTheme: "dark",
-    isTransparent: false,
-    displayMode: "adaptive",
-    locale: lang,
-  };
-}
-
 export const WIDGET_COPY = {
   en: {
     status: "CFDs · Capital.com · latest available quotes, potentially delayed",
     native: "Native provider quotation, displayed by TradingView. No unit conversion.",
     blocked: "TradingView could not be loaded.",
     fallback: "Widget unavailable or blocked? View on TradingView",
-    ticker: "Copper, aluminium, wheat, corn and cocoa · CFDs by Capital.com",
   },
   fr: {
     status: "CFD · Capital.com · dernières cotations disponibles, délai possible",
     native: "Cotation native du fournisseur, affichée par TradingView. Aucune conversion d’unité.",
     blocked: "TradingView n’a pas pu être chargé.",
     fallback: "Widget indisponible ou bloqué ? Consulter sur TradingView",
-    ticker: "Cuivre, aluminium, blé, maïs et cacao · CFD de Capital.com",
   },
 } as const;
 

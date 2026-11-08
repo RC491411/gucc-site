@@ -67,7 +67,13 @@ try {
     });
     await page.goto(`${base}/markets`);
     await page.waitForFunction((lang) => document.documentElement.lang === lang, lang);
-    await page.locator('[data-tv-widget="ticker-tape"] iframe').waitFor();
+    await page.locator('[class~="group/tick"]').first().waitFor();
+    assert.equal(await page.locator('[data-tv-widget="ticker-tape"]').count(), 0);
+    assert.equal(
+      await page.locator("[data-tv-widget]").count(),
+      0,
+      "no second ticker row before the market cards",
+    );
     const legacy = page.locator('[class~="group/tick"]');
     assert.equal(await legacy.count(), 10, "only protected five, duplicated for marquee");
     const legacyText = (await legacy.allTextContents()).join(" ");
@@ -76,20 +82,17 @@ try {
     for (const symbol of ["COPPER", "ALU", "WHEAT", "CORN", "COCOA"])
       assert.doesNotMatch(legacyText, new RegExp(symbol));
     assert.ok(feedRequests > 0);
-    const ticker = await page.evaluate(
-      () => window.__tvTests.find((e) => e.config.symbols[0]?.proName)?.config,
-    );
-    assert.deepEqual(
-      ticker.symbols.map((s) => s.proName),
-      expected,
-    );
-    assert.equal(ticker.locale, lang);
     await page.locator('[data-desk="metals"]').click();
     for (const commodity of ["COPPER", "ALU"]) {
       const widget = page.locator(`[data-tv-commodity="${commodity}"]`);
       await widget.scrollIntoViewIfNeeded();
       await widget.locator("iframe").waitFor();
       assert.equal(await widget.locator("script").count(), 1);
+      const config = await widget
+        .locator("script")
+        .evaluate((script) => JSON.parse(script.textContent));
+      const index = ["COPPER", "ALU", "WHEAT", "CORN", "COCOA"].indexOf(commodity);
+      assert.equal(config.symbols[0][1], expected[index] + "|1D");
       assert.equal(await widget.locator(".tradingview-widget-copyright").count(), 1);
       assert.equal(
         await widget.locator('a[href^="https://www.tradingview.com/symbols/CAPITALCOM-"]').count(),
@@ -106,6 +109,11 @@ try {
       await widget.scrollIntoViewIfNeeded();
       await widget.locator("iframe").waitFor();
       assert.equal(await widget.locator("script").count(), 1);
+      const config = await widget
+        .locator("script")
+        .evaluate((script) => JSON.parse(script.textContent));
+      const index = ["COPPER", "ALU", "WHEAT", "CORN", "COCOA"].indexOf(commodity);
+      assert.equal(config.symbols[0][1], expected[index] + "|1D");
     }
     assert.equal(await page.locator("article path.chart-flat").count(), 0);
     assert.equal(await page.locator("article path.chart-draw").count(), 0);
@@ -125,13 +133,14 @@ try {
         ),
       otherLang,
     );
-    assert.equal(await page.locator('[data-tv-widget="ticker-tape"] script').count(), 1);
+    assert.equal(await page.locator('[data-tv-widget="ticker-tape"]').count(), 0);
     for (const commodity of ["WHEAT", "CORN", "COCOA"])
       assert.equal(await page.locator(`[data-tv-commodity="${commodity}"] script`).count(), 1);
     // Known network failure: no synthetic prices; actual fallback links remain.
     blockedWidgets = true;
     await page.reload();
-    await page.locator('[data-tv-widget="ticker-tape"] [role="status"]').waitFor();
+    await page.locator('[class~="group/tick"]').first().waitFor();
+    assert.equal(await page.locator('[data-tv-widget="ticker-tape"]').count(), 0);
     await page.locator('[data-desk="ag"]').click();
     for (const commodity of ["WHEAT", "CORN", "COCOA"]) {
       const widget = page.locator(`[data-tv-commodity="${commodity}"]`);
@@ -154,7 +163,7 @@ try {
     assert.equal(widthsFit, true, "new containers fit a 390px viewport");
     assert.equal(posts, 0, "no external submission in market tests");
     console.log(
-      `${lang}: mapping/ticker, protected five, lazy charts, tab cleanup, language remount, script-block fallback passed (all providers mocked)`,
+      `${lang}: unwanted ticker absent, retained cards, protected five, lazy charts, tab cleanup, language remount, script-block fallback passed (all providers mocked)`,
     );
     await page.close();
   }

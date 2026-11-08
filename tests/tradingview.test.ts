@@ -6,7 +6,6 @@ import {
   TRADINGVIEW_INSTRUMENTS,
   isTradingViewCommodity,
   overviewConfig,
-  tickerConfig,
   tradingViewUrl,
   mountTradingViewWidget,
   WIDGET_COPY,
@@ -51,10 +50,6 @@ test("EN/FR charts keep native provider values, percent and history, no guessed 
       );
       assert.match(tradingViewUrl(key), /^https:\/\/www\.tradingview\.com\/symbols\/CAPITALCOM-/);
     }
-    assert.deepEqual(
-      tickerConfig(lang).symbols.map((i) => i.proName),
-      expected,
-    );
     assert.match(WIDGET_COPY[lang].status, /CFD/);
     assert.match(WIDGET_COPY[lang].status, /delayed|délai/);
     assert.doesNotMatch(WIDGET_COPY[lang].status, /previous|veille|real.time|temps réel/);
@@ -149,16 +144,16 @@ test("old cleanup cannot remove replacement after language or route change", () 
   const host = new FakeDocument().createElement("host");
   const old = mountTradingViewWidget(
     host as unknown as HTMLElement,
-    "ticker-tape",
-    tickerConfig("en"),
+    "symbol-overview",
+    overviewConfig("COPPER", "en"),
     tradingViewUrl("COPPER"),
     "CFDs",
     () => {},
   );
   const current = mountTradingViewWidget(
     host as unknown as HTMLElement,
-    "ticker-tape",
-    tickerConfig("fr"),
+    "symbol-overview",
+    overviewConfig("COPPER", "fr"),
     tradingViewUrl("COPPER"),
     "CFD",
     () => {},
@@ -201,7 +196,7 @@ test("working five feed/cache/reference and exact original card/chart implementa
 test("targets bypass legacy prices/history in both renderers, including stale quote records", () => {
   const ticker = source("src/components/site/ticker.tsx");
   assert.match(ticker, /COMMODITIES\.filter\(\(c\) => c\.liveCode\)\.map/);
-  assert.match(ticker, /<TradingViewTargetsTicker \/>/);
+  assert.doesNotMatch(ticker, /TradingViewTargetsTicker|tradingview-widget/);
   const cards = source("src/components/pages/markets-page.tsx");
   assert.match(cards, /board\.map\(\(c, i\) => isTradingViewCommodity\(c\.symbol\) \?/);
   const widgets = source("src/components/markets/tradingview-widget.tsx");
@@ -216,4 +211,19 @@ test("targets bypass legacy prices/history in both renderers, including stale qu
     source("src/lib/tradingview.ts"),
     /fetch\(|postMessage\(|contentDocument|contentWindow|localStorage/,
   );
+});
+
+// The requested removal must not change either retained renderer.
+test("original upper ticker and five retained TradingView card shells are unchanged", () => {
+  assert.equal(
+    hash(source("src/components/site/ticker.tsx")),
+    "07a0659abb8fdc9ccc99efb7136a7cecd196ea5bcaaec1a8cb6aec076a7aa7e8",
+  );
+  const widgetSource = source("src/components/markets/tradingview-widget.tsx");
+  const card = widgetSource
+    .slice(widgetSource.indexOf("export function TradingViewCommodityCard("))
+    .trim();
+  assert.equal(hash(card), "34381583b0307cbdf4e42d75f71f548a3246800b30cb18e3cf449fa7282b8bac");
+  assert.doesNotMatch(widgetSource, /TradingViewTargetsTicker|ticker-tape|tickerConfig/);
+  assert.doesNotMatch(source("src/lib/tradingview.ts"), /ticker-tape|tickerConfig/);
 });

@@ -4,7 +4,6 @@ import { useLanguage } from "@/lib/language";
 import {
   mountTradingViewWidget,
   overviewConfig,
-  tickerConfig,
   tradingViewUrl,
   TRADINGVIEW_INSTRUMENTS,
   WIDGET_COPY,
@@ -21,7 +20,7 @@ function TradingViewWidget({
   lazy = false,
 }: {
   kind: WidgetKind;
-  commodity?: TradingViewCommodity;
+  commodity: TradingViewCommodity;
   lazy?: boolean;
 }) {
   const { lang } = useLanguage();
@@ -30,14 +29,9 @@ function TradingViewWidget({
   const [near, setNear] = useState(!lazy);
   const [failed, setFailed] = useState(false);
   const copy = WIDGET_COPY[lang];
-  const config = useMemo(
-    () => (commodity ? overviewConfig(commodity, lang) : tickerConfig(lang)),
-    [commodity, lang],
-  );
-  const sourceUrl = commodity ? tradingViewUrl(commodity) : tradingViewUrl("COPPER");
-  const attribution = commodity
-    ? `${TRADINGVIEW_INSTRUMENTS[commodity].symbol} · Capital.com CFD`
-    : "Capital.com commodity CFDs";
+  const config = useMemo(() => overviewConfig(commodity, lang), [commodity, lang]);
+  const sourceUrl = tradingViewUrl(commodity);
+  const attribution = `${TRADINGVIEW_INSTRUMENTS[commodity].symbol} · Capital.com CFD`;
 
   useEffect(() => {
     if (!lazy || typeof IntersectionObserver === "undefined") {
@@ -69,43 +63,20 @@ function TradingViewWidget({
 
   return (
     <div ref={anchor} data-tv-widget={kind} data-tv-commodity={commodity}>
-      <div
-        ref={host}
-        hidden={failed}
-        className={kind === "symbol-overview" ? "min-w-0 min-h-[352px]" : "min-w-0 min-h-[78px]"}
-      />
+      <div ref={host} hidden={failed} className="min-w-0 min-h-[352px]" />
       {failed ? (
         <p role="status" className="mt-2 font-mono text-xs text-steel">
           {copy.blocked}
         </p>
       ) : null}
-      {commodity ? (
-        <a
-          href={sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-2 inline-block font-mono text-[11px] leading-relaxed text-ice underline underline-offset-4"
-        >
-          {copy.fallback}
-        </a>
-      ) : (
-        <div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] text-ice">
-          <span>{copy.fallback}:</span>
-          {(Object.keys(TRADINGVIEW_INSTRUMENTS) as TradingViewCommodity[]).map((key) => (
-            <a
-              key={key}
-              href={tradingViewUrl(key)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4"
-            >
-              {lang === "fr"
-                ? TRADINGVIEW_INSTRUMENTS[key].nameFr
-                : TRADINGVIEW_INSTRUMENTS[key].nameEn}
-            </a>
-          ))}
-        </div>
-      )}
+      <a
+        href={sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 inline-block font-mono text-[11px] leading-relaxed text-ice underline underline-offset-4"
+      >
+        {copy.fallback}
+      </a>
     </div>
   );
 }
@@ -138,20 +109,5 @@ export function TradingViewCommodityCard({
         {P.commodities[commodity]?.[lang]}
       </p>
     </article>
-  );
-}
-
-export function TradingViewTargetsTicker() {
-  const { lang } = useLanguage();
-  return (
-    <section
-      aria-label={WIDGET_COPY[lang].ticker}
-      className="border-b border-paper/10 bg-ink px-4 py-3 sm:px-6"
-    >
-      <p className="mb-2 font-mono text-[10px] leading-relaxed text-steel">
-        {WIDGET_COPY[lang].status}
-      </p>
-      <TradingViewWidget kind="ticker-tape" />
-    </section>
   );
 }
