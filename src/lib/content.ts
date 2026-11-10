@@ -27,26 +27,16 @@ export const founders = [
     linkedin: "https://www.linkedin.com/in/arisismajli/",
     role: { fr: "Vice-président", en: "Vice-President" },
     bio: {
-      fr: "Vice-président du Comité. Private Client Advisor au desk Growth d'UBS à Genève et étudiant en Bachelor d'économie et management à l'UNIGE. Il préside aussi le Geneva University Investment Club.",
-      en: "Vice-President of the Committee. Private Client Advisor on the Growth desk at UBS in Geneva and Bachelor student in Economics and Management at UNIGE. He is also President of the Geneva University Investment Club.",
+      fr: "Co-fondateur et vice-président. Private Client Advisor chez UBS, Aris préside également le Geneva University Investment Club (GUIC), seul club d’investissement géré par des étudiants à l’UNIGE, qui gère un véritable portefeuille. Fort de sa formation en économie et management à l’UNIGE, il porte la croissance du club et relie les étudiants à l’industrie du négoce.",
+      en: "Co-founder and Vice-President. A Private Client Advisor at UBS, Aris also chairs the Geneva University Investment Club (GUIC), UNIGE’s only student-run investment club managing a real portfolio. Drawing on his Economics and Management studies at UNIGE, he drives the club’s growth and connects students with the trading industry.",
     },
     facts: {
       fr: ["Private Client Advisor, UBS", "Président du GUIC", "Étudiant à la GSEM, UNIGE", "A construit seul une voiture de course"],
       en: ["Private Client Advisor, UBS", "President, GUIC", "Student at GSEM, UNIGE", "Built a race car on his own"],
     },
     long: {
-      fr: [
-        "Aris est vice-président du Comité. Il termine son Bachelor en économie et management à l'Université de Genève tout en travaillant dans la banque.",
-        "Depuis septembre 2026, il est Private Client Advisor dans le segment Growth d'UBS : conseil en placement, ouverture de comptes et prévoyance. Auparavant, il a passé un an dans l'équipe Migration Expert d'UBS lors de l'intégration de Credit Suisse, en traitant plus de 1 000 demandes de clients par mois.",
-        "Son intérêt pour les marchés est né sur le trading floor de Pictet, où il a passé un été en rotation entre actions, obligations, dérivés et change, en travaillant sur le pricing d'options avec Black-Scholes. Il suit les marchés de près et gère son propre portefeuille en actions, ETF et matières premières.",
-        "Au Geneva University Investment Club, il a été élu responsable du nouveau département Cryptomonnaies en 2025, puis président en 2026, à la tête d'une communauté d'environ 45 membres actifs autour d'un vrai portefeuille. Hors de la finance, il a passé trois ans à construire seul une voiture de course, entièrement de zéro. Sa leçon : la précision bat la vitesse.",
-      ],
-      en: [
-        "Aris is Vice-President of the Committee. He is completing his Bachelor in Economics and Management at the University of Geneva while working in banking.",
-        "Since September 2026 he has been a Private Client Advisor in the Growth segment at UBS, covering investment advice, account opening and pension planning. Before that he spent a year on the UBS Migration Expert team during the Credit Suisse integration, handling more than 1,000 client requests a month.",
-        "His interest in markets started on the trading floor at Pictet, where he spent a summer rotating across equities, fixed income, derivatives and FX and worked on options pricing with Black-Scholes. He follows the markets closely and runs his own portfolio across equities, ETFs and commodities.",
-        "At the Geneva University Investment Club he was elected Head of the new Cryptocurrency department in 2025 and President in 2026, leading a community of about 45 active members around a real portfolio. Outside finance he spent three years building a race car on his own, entirely from the ground up. His lesson: precision beats speed.",
-      ],
+      fr: ["Co-fondateur et vice-président du GUCC. Il travaille comme Private Client Advisor chez UBS et préside le Geneva University Investment Club (GUIC), le seul club d’investissement géré par des étudiants à l’UNIGE, qui gère activement un véritable portefeuille d’actifs réels. Sa formation académique est en économie et management à l’UNIGE. Cette expérience lui permet de porter la croissance du club et de bâtir des ponts entre les étudiants et l’industrie du négoce."],
+      en: ["Co-founder and Vice-President of the GUCC. He works as a Private Client Advisor at UBS and is President of the Geneva University Investment Club (GUIC), the only student-run investment club at UNIGE, which actively manages a real portfolio of real assets. His academic background is in Economics and Management at UNIGE. This experience allows him to drive the club's growth and build bridges between students and the trading industry."],
     },
   },
   {
