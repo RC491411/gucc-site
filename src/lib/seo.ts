@@ -9,7 +9,7 @@ export const SITE_NAME = "GUCC · Geneva University Commodities Club";
  * from Search Console (Settings → Ownership verification → HTML tag). Preferred alternative:
  * a DNS TXT record on gucc.ch (Domain property), which needs no code change.
  */
-export const GOOGLE_SITE_VERIFICATION = "";
+export const GOOGLE_SITE_VERIFICATION = "jXFLlS7c8mnt_LJbI21pLtgw-PBL7M9zcTFZJ54cpxg";
 
 export const DEFAULT_DESCRIPTION =
   "GUCC, the Geneva University Commodities Club: student association of the University of Geneva (UNIGE) for commodity trading. Training, market analysis, conferences and networking in Geneva.";
