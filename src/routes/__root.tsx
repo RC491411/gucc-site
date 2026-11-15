@@ -5,34 +5,34 @@ import { MotionRoot } from "@/components/motion/motion-root";
 import { Toaster } from "sonner";
 import { NotFound } from "@/components/site/not-found";
 import appCss from "../styles.css?url";
+import { DEFAULT_DESCRIPTION, GOOGLE_SITE_VERIFICATION, SITE_NAME, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-const APP_NAME = "Geneva University Commodities Club";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
-      {
-        name: "description",
-        content:
-          "Student association at the University of Geneva. Training, market analysis, conferences and networking. Connecting Academia to Global Trade.",
-      },
+      { title: SITE_NAME },
+      { name: "description", content: DEFAULT_DESCRIPTION },
+      { name: "robots", content: "index, follow" },
       { name: "theme-color", content: "#0c1c1e" },
-      { property: "og:title", content: APP_NAME },
-      {
-        property: "og:description",
-        content:
-          "Student association at the University of Geneva. Training, market analysis, conferences and networking. Connecting Academia to Global Trade.",
-      },
+      ...(GOOGLE_SITE_VERIFICATION ? [{ name: "google-site-verification", content: GOOGLE_SITE_VERIFICATION }] : []),
+      { property: "og:site_name", content: "Geneva University Commodities Club" },
+      { property: "og:title", content: SITE_NAME },
+      { property: "og:description", content: DEFAULT_DESCRIPTION },
       { property: "og:image", content: "https://www.gucc.ch/og.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_GB" },
+      { property: "og:locale:alternate", content: "fr_CH" },
       { property: "og:url", content: "https://www.gucc.ch/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "https://www.gucc.ch/og.png" },
     ],
     scripts: [
+      { type: "application/ld+json", children: JSON.stringify([organizationJsonLd, websiteJsonLd]) },
       {
         children:
           "document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reduced-motion')",

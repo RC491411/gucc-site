@@ -19,3 +19,15 @@ for (const [from, to] of Object.entries(REDIRECTS)) {
   );
   console.log(`[static-redirects] ${from} -> ${to}`);
 }
+
+// The SPA fallback (404.html) is prerendered from the home route: mark it noindex and drop the
+// home canonical so unknown URLs are never treated as copies of the home page.
+{
+  const { readFileSync } = await import("node:fs");
+  const file = join(OUT, "404.html");
+  const html = readFileSync(file, "utf8")
+    .replace('<meta name="robots" content="index, follow"/>', '<meta name="robots" content="noindex"/>')
+    .replace(/<link rel="canonical" href="[^"]*"\/>/, "");
+  writeFileSync(file, html);
+  console.log("[static-redirects] 404.html -> noindex");
+}
